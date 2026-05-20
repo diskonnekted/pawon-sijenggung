@@ -1,91 +1,63 @@
-# Panduan Penggunaan Marketplace Kalurahan Pondokrejo
+# Manual Operasional PAWON (Pasar Warga Pondokrejo) 🍲⚡
 
-Dokumen ini berisi panduan operasional untuk pengelola (Admin Desa), Penjual (UMKM), dan Pembeli di platform Marketplace Pondokrejo.
+Dokumen ini berisi panduan lengkap untuk mengelola aplikasi PAWON melalui dashboard Sanity Studio.
 
----
+## 1. Manajemen Pesanan (Alur Kurir & Admin)
 
-## 1. Peran Pengguna (Roles)
+PAWON menggunakan mekanisme **"Penunjukan Admin"** untuk pengantaran barang guna memastikan keadilan dan ketepatan lokasi.
 
-| Peran | Tanggung Jawab | Akses |
-| :--- | :--- | :--- |
-| **Admin Desa** | Mengelola data penjual, kurir, dan kategori produk. | Panel Admin (`/studio`) |
-| **Penjual (UMKM)** | Mengupload produk dan memperbarui stok. | Panel Admin (`/studio`) |
-| **Kurir Desa** | Memperbarui status pengiriman pesanan COD. | Panel Admin (`/studio`) |
-| **Pembeli (Warga)** | Menjelajahi produk dan melakukan pemesanan. | Halaman Depan (Website) |
----
-
-## 2. Panduan Admin & Penjual (Panel Admin)
-
-Akses Panel Admin melalui alamat: `http://localhost:3000/studio`
-
-### A. Pendaftaran Penjual Baru
-Calon penjual dapat mendaftar melalui halaman website `/register-vendor`.
-1.  **Verifikasi**: Admin Desa membuka menu **Penjual (UMKM)** -> **Perlu Verifikasi**.
-2.  **Aktivasi**: Periksa data UMKM, jika sesuai, aktifkan toggle **Status Verifikasi** dan klik **Publish**.
-3.  **Unggah Produk**: Setelah aktif, penjual dapat mulai menambahkan produk melalui menu **Produk**.
-
-### B. Mengelola Produk
-1.  Buka menu **Produk** di sidebar.
-...
-
-2.  Klik ikon tambah (+) untuk membuat produk baru.
-3.  Isi data produk: Nama, Harga, Foto, Deskripsi, dan pilih Penjual (UMKM) yang bersangkutan.
-4.  Klik **Publish** untuk menampilkan produk di website.
-
-### B. Mengelola Pesanan Masuk (Alur COD)
-Semua pesanan yang dibuat oleh warga akan muncul di menu **Pesanan Masuk**.
-1.  **Filter Pesanan**: Gunakan tab "Perlu Konfirmasi" untuk melihat pesanan baru.
-2.  **Proses Pesanan**: Ubah status pesanan dari `Menunggu Konfirmasi` menjadi `Diproses Penjual`.
-3.  **Tugaskan Kurir**: Pilih nama kurir pada field "Kurir yang Bertugas" dan ubah status menjadi `Sedang Diantar Kurir`.
-4.  **Selesaikan Transaksi**: Setelah kurir menerima uang tunai dari warga, ubah status menjadi `Selesai (COD)`.
+### Alur Kerja Pesanan:
+1.  **Status: Menunggu Konfirmasi**
+    *   Pesanan baru masuk dari warga (pembeli).
+    *   **Admin:** Menghubungi UMKM terkait untuk memastikan stok barang tersedia.
+2.  **Status: Diproses Penjual**
+    *   Admin mengubah status ke "Diproses Penjual" setelah stok dikonfirmasi.
+    *   UMKM mulai menyiapkan/mengemas barang.
+3.  **Penunjukan Kurir (Critical Step):**
+    *   Admin membuka dokumen pesanan di Sanity Studio.
+    *   Pada kolom **"Kurir yang Bertugas"**, pilih nama kurir yang tersedia dan paling dekat lokasinya.
+    *   **Catatan Khusus untuk Kurir:** Isi instruksi tambahan jika ada (misal: "Barang pecah belah" atau "Titipkan ke warung depan rumah").
+4.  **Status: Sedang Diantar Kurir**
+    *   Admin mengubah status ke "Sedang Diantar Kurir" setelah barang diambil oleh kurir dari UMKM.
+    *   Pembeli dapat melihat nama & nomor WA kurir di halaman "Lacak Pesanan".
+5.  **Status: Selesai (COD)**
+    *   Kurir menerima uang tunai dari pembeli.
+    *   Admin mengubah status ke "Selesai (COD)" setelah menerima konfirmasi dari kurir.
 
 ---
 
-## 3. Panduan Pembeli (Warga)
+## 2. Manajemen Pengguna (UMKM & Kurir)
 
-### A. Cara Berbelanja
-1.  Buka halaman utama website.
-2.  Gunakan kotak **Pencarian** untuk mencari produk tertentu atau jelajahi daftar produk.
-3.  Klik produk untuk melihat detail, lalu klik **Tambah ke Keranjang**.
-4.  Buka ikon **Keranjang Belanja** di pojok kanan atas.
-5.  Klik **Lanjut Checkout**.
+### Mendaftarkan UMKM Baru:
+*   Warga mendaftar melalui website di menu **"Daftar UMKM"** (Footer).
+*   Data masuk ke menu **"Penjual (UMKM)"** di Sanity dengan status `isVerified: false`.
+*   **Admin:** Melakukan survei lokasi/identitas. Jika valid, centang **"Status Verifikasi"** dan klik **Publish**.
 
-### B. Proses Checkout (COD)
-1.  Isi formulir Nama, Nomor WhatsApp, dan Alamat Lengkap di wilayah Pondokrejo.
-2.  Klik **Buat Pesanan Sekarang**.
-3.  **PENTING**: Catat atau screenshot **Nomor Pesanan** (misal: `ORD-ABC123`) yang muncul di layar sukses.
-
-### C. Melacak Pesanan
-1.  Klik menu **Lacak Pesanan** di Navbar.
-2.  Masukkan Nomor Pesanan Anda.
-3.  Sistem akan menampilkan status terbaru (misal: "Sedang Diantar Kurir") beserta nama kurir yang bertugas.
+### Mendaftarkan Kurir Baru:
+*   Warga mendaftar melalui website di menu **"Daftar Jadi Kurir"** (Footer).
+*   Data masuk ke menu **"Kurir Desa"** dengan status `Inactive`.
+*   **Admin:** Verifikasi identitas. Jika valid, ubah status menjadi **"Aktif"** dan klik **Publish**.
 
 ---
 
-## 4. Informasi Teknis (Untuk Developer)
+## 3. Konten & Promosi
 
-### Menjalankan Aplikasi secara Lokal
-```bash
-# Instal dependensi (jika baru pertama kali)
-npm install
+### Banner Promosi (Slider):
+*   Gunakan menu **"Banner Promosi"**.
+*   **Wajib:** Unggah dua versi gambar (Desktop: Landscape & Mobile: Portrait) agar tampilan di HP tidak terpotong.
+*   Banner yang berstatus "Aktif" akan muncul otomatis di atas seksi "Paling Laris".
 
-# Jalankan mode pengembangan
-npm run dev
-```
-
-### Konfigurasi Environment (`.env.local`)
-Pastikan file `.env.local` berisi kunci berikut agar aplikasi terhubung ke database:
-- `NEXT_PUBLIC_SANITY_PROJECT_ID`
-- `NEXT_PUBLIC_SANITY_DATASET`
-- `SANITY_API_WRITE_TOKEN` (Untuk mencatat pesanan)
-
-### Skema Database (Sanity)
-Skema didefinisikan dalam folder `src/sanity/schemaTypes/`:
-- `productType.ts`: Struktur data produk.
-- `orderType.ts`: Logika transaksi dan tracking.
-- `vendorType.ts`: Data profil UMKM.
-- `courierType.ts`: Data tim pengantar desa.
+### Produk Terlaris & Promo:
+*   **Terlaris:** Centang "Produk Terlaris" pada dokumen produk agar muncul di seksi "Paling Laris 🔥".
+*   **Promo:** Centang "Produk Promo" dan masukkan angka "Diskon (%)" agar harga coret otomatis muncul di website.
 
 ---
 
-*Dibuat oleh Gemini CLI untuk Kalurahan Pondokrejo.*
+## 4. Informasi Desa (Kabar Kalurahan)
+
+*   Gunakan menu **"Info & Pengumuman"** untuk memposting berita atau panduan.
+*   Setiap artikel akan otomatis tampil di halaman depan mobile & desktop sebagai bentuk dukungan desa kepada warga.
+
+---
+*Manual ini diperbarui secara otomatis setiap ada perubahan fitur sistem.*
+*© 2026 Pemerintah Kalurahan Pondokrejo.*

@@ -85,5 +85,12 @@ export const orderType = defineType({
       type: 'reference',
       to: [{ type: 'courier' }],
     }),
+    defineField({
+      name: 'courierNotes',
+      title: 'Catatan Khusus untuk Kurir',
+      type: 'text',
+      rows: 3,
+      description: 'Instruksi tambahan dari Admin (misal: Barang pecah belah, titipkan ke tetangga jika tidak ada orang, dll).',
+    }),
   ],
 })
