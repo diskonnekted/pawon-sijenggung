@@ -95,6 +95,9 @@ export default async function RootLayout({
                         <Link href="/register-vendor" className="text-slate-500 hover:text-green-600 transition-colors">Daftar Jadi Penjual</Link>
                       </li>
                       <li>
+                        <Link href="/register-courier" className="text-slate-500 hover:text-green-600 transition-colors">Daftar Jadi Kurir</Link>
+                      </li>
+                      <li>
                         <Link href="/track" className="text-slate-500 hover:text-green-600 transition-colors">Lacak Pesanan Kurir</Link>
                       </li>
                       <li>
