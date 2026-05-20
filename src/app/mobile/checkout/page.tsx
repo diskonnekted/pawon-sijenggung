@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { useCart } from '@/context/CartContext'
 import { createOrder } from '@/app/actions/order'
 import { useRouter } from 'next/navigation'
-import { Loader2, CheckCircle, ChevronLeft, MapPin, Phone, User, Info } from 'lucide-react'
+import { Loader2, CheckCircle, ChevronLeft, MapPin, Phone, User, Info, ShoppingBag } from 'lucide-react'
 import { OrderFormData } from '@/types'
 import Link from 'next/link'
 
 export default function MobileCheckoutPage() {
-  const { items, totalPrice, clearCart } = useCart()
+  const { items, totalPrice, shippingFee, grandTotal, clearCart } = useCart()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -25,7 +25,7 @@ export default function MobileCheckoutPage() {
     e.preventDefault()
     setLoading(true)
 
-    const result = await createOrder(formData, items, totalPrice)
+    const result = await createOrder(formData, items, grandTotal, shippingFee)
 
     if (result.success && result.orderNumber) {
       setOrderInfo({ orderNumber: result.orderNumber })
@@ -146,9 +146,19 @@ export default function MobileCheckoutPage() {
                   <span className="text-slate-900">Rp{(item.price * item.quantity).toLocaleString('id-ID')}</span>
                 </div>
               ))}
+              <div className="border-t border-slate-200 pt-4 space-y-2">
+                <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+                  <span>Subtotal Produk</span>
+                  <span>Rp{totalPrice.toLocaleString('id-ID')}</span>
+                </div>
+                <div className="flex justify-between items-center text-xs font-bold text-slate-400">
+                  <span>Ongkos Kirim</span>
+                  <span>Rp{shippingFee.toLocaleString('id-ID')}</span>
+                </div>
+              </div>
               <div className="border-t border-slate-200 pt-4 flex justify-between items-center">
-                <span className="font-black text-slate-900">Total</span>
-                <span className="text-xl font-black text-green-700">Rp{totalPrice.toLocaleString('id-ID')}</span>
+                <span className="font-black text-slate-900">Total Bayar</span>
+                <span className="text-xl font-black text-green-700">Rp{grandTotal.toLocaleString('id-ID')}</span>
               </div>
             </div>
           </div>
@@ -174,5 +184,3 @@ export default function MobileCheckoutPage() {
     </div>
   )
 }
-
-import { ShoppingBag } from 'lucide-react'

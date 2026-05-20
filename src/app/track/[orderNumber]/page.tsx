@@ -121,7 +121,20 @@ export default async function OrderResultPage({ params }: Props) {
                 ))}
               </div>
 
-              <div className="mt-8 pt-8 border-t flex justify-between items-center">
+              <div className="mt-8 pt-8 border-t space-y-2">
+                <div className="flex justify-between items-center text-sm font-bold text-gray-400">
+                  <span>Subtotal Barang</span>
+                  <span>Rp {(order.totalAmount - (order.shippingFee || 0)).toLocaleString('id-ID')}</span>
+                </div>
+                {order.shippingFee && (
+                  <div className="flex justify-between items-center text-sm font-bold text-gray-400">
+                    <span>Ongkos Kirim</span>
+                    <span>Rp {order.shippingFee.toLocaleString('id-ID')}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-4 pt-4 border-t flex justify-between items-center">
                 <span className="text-xl font-bold text-gray-500">Total Pembayaran (COD)</span>
                 <span className="text-3xl font-black text-green-700">
                   Rp {order.totalAmount.toLocaleString('id-ID')}

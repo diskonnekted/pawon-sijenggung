@@ -11,19 +11,20 @@ const writeClient = createClient({
   useCdn: false,
   token: process.env.SANITY_API_WRITE_TOKEN,
 })
-
-export async function createOrder(formData: OrderFormData, items: CartItem[], totalPrice: number) {
+export async function createOrder(formData: OrderFormData, items: CartItem[], totalAmount: number, shippingFee: number) {
   try {
     const orderNumber = `ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
-    
+
     const doc = {
       _type: 'order',
       orderNumber,
       customerName: formData.name,
       customerPhone: formData.phone,
       deliveryAddress: formData.address,
-      totalAmount: totalPrice,
+      totalAmount,
+      shippingFee,
       status: 'pending',
+...
       items: items.map((item) => ({
         _key: Math.random().toString(36).substr(2, 9),
         product: {

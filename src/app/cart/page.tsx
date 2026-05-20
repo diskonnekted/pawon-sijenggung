@@ -7,7 +7,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react'
 
 export default function CartPage() {
-  const { items, totalPrice, updateQuantity, removeItem } = useCart()
+  const { items, totalPrice, shippingFee, grandTotal, updateQuantity, removeItem } = useCart()
 
   if (items.length === 0) {
     return (
@@ -90,13 +90,17 @@ export default function CartPage() {
               
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between text-slate-400 font-bold uppercase tracking-widest text-xs">
-                  <span>Total Barang</span>
-                  <span className="text-white">{items.reduce((sum, i) => sum + i.quantity, 0)}</span>
+                  <span>Subtotal Barang</span>
+                  <span className="text-white">Rp{totalPrice.toLocaleString('id-ID')}</span>
+                </div>
+                <div className="flex justify-between text-slate-400 font-bold uppercase tracking-widest text-xs">
+                  <span>Ongkos Kirim Desa</span>
+                  <span className="text-white">Rp{shippingFee.toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between items-end border-t border-white/10 pt-6">
-                  <span className="text-slate-400 font-bold">ESTIMASI TOTAL</span>
+                  <span className="text-slate-400 font-bold">TOTAL BAYAR</span>
                   <span className="text-3xl font-black text-green-400 tracking-tighter">
-                    Rp{totalPrice.toLocaleString('id-ID')}
+                    Rp{grandTotal.toLocaleString('id-ID')}
                   </span>
                 </div>
               </div>

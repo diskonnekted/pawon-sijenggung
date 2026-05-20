@@ -7,7 +7,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { Trash2, Plus, Minus, ShoppingBag, ChevronLeft } from 'lucide-react'
 
 export default function MobileCartPage() {
-  const { items, totalPrice, updateQuantity, removeItem } = useCart()
+  const { items, totalPrice, shippingFee, grandTotal, updateQuantity, removeItem } = useCart()
 
   if (items.length === 0) {
     return (
@@ -80,9 +80,19 @@ export default function MobileCartPage() {
       </main>
 
       <div className="fixed bottom-20 left-0 right-0 bg-white border-t border-slate-100 p-6 z-40">
+        <div className="space-y-2 mb-4">
+          <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+            <span>Subtotal Barang</span>
+            <span>Rp{totalPrice.toLocaleString('id-ID')}</span>
+          </div>
+          <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+            <span>Ongkos Kirim</span>
+            <span>Rp{shippingFee.toLocaleString('id-ID')}</span>
+          </div>
+        </div>
         <div className="flex justify-between items-center mb-6">
           <span className="text-slate-500 font-bold">Total Pembayaran</span>
-          <span className="text-2xl font-black text-slate-900">Rp{totalPrice.toLocaleString('id-ID')}</span>
+          <span className="text-2xl font-black text-slate-900">Rp{grandTotal.toLocaleString('id-ID')}</span>
         </div>
         <Link href="/checkout" className="block w-full bg-green-600 text-white text-center font-black py-5 rounded-2xl shadow-xl shadow-green-600/20 active:scale-95 transition-all">
           Lanjut ke Pembayaran

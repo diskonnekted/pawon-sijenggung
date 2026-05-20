@@ -93,6 +93,18 @@ export default async function MobileOrderDetailPage({ params }: Props) {
                   <span className="font-black text-slate-900 text-sm">Rp{(item.price * item.quantity).toLocaleString('id-ID')}</span>
                 </div>
               ))}
+              <div className="space-y-2 px-2">
+                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span>Subtotal Produk</span>
+                  <span>Rp{(order.totalAmount - (order.shippingFee || 0)).toLocaleString('id-ID')}</span>
+                </div>
+                {order.shippingFee && (
+                  <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <span>Ongkos Kirim</span>
+                    <span>Rp{order.shippingFee.toLocaleString('id-ID')}</span>
+                  </div>
+                )}
+              </div>
               <div className="flex justify-between items-center p-4 bg-green-50 rounded-2xl border border-green-100">
                 <span className="font-black text-green-800">Total COD</span>
                 <span className="text-xl font-black text-green-700">Rp{order.totalAmount.toLocaleString('id-ID')}</span>

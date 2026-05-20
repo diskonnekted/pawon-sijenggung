@@ -8,7 +8,7 @@ import { Loader2, CheckCircle } from 'lucide-react'
 import { OrderFormData } from '@/types'
 
 export default function CheckoutPage() {
-  const { items, totalPrice, clearCart } = useCart()
+  const { items, totalPrice, shippingFee, grandTotal, clearCart } = useCart()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -24,7 +24,7 @@ export default function CheckoutPage() {
     e.preventDefault()
     setLoading(true)
 
-    const result = await createOrder(formData, items, totalPrice)
+    const result = await createOrder(formData, items, grandTotal, shippingFee)
 
     if (result.success && result.orderNumber) {
       setOrderInfo({ orderNumber: result.orderNumber })
@@ -135,9 +135,19 @@ export default function CheckoutPage() {
                 <span className="font-bold text-gray-900">Rp {(item.price * item.quantity).toLocaleString('id-ID')}</span>
               </div>
             ))}
+            <div className="border-t pt-4 space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500 font-bold">Subtotal Produk</span>
+                <span className="font-bold text-gray-900">Rp {totalPrice.toLocaleString('id-ID')}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500 font-bold">Ongkos Kirim</span>
+                <span className="font-bold text-gray-900">Rp {shippingFee.toLocaleString('id-ID')}</span>
+              </div>
+            </div>
             <div className="border-t pt-4 mt-4 flex justify-between items-center">
               <span className="text-lg font-bold">Total Pembayaran</span>
-              <span className="text-2xl font-black text-green-700">Rp {totalPrice.toLocaleString('id-ID')}</span>
+              <span className="text-2xl font-black text-green-700">Rp {grandTotal.toLocaleString('id-ID')}</span>
             </div>
             <div className="bg-yellow-50 p-4 rounded-2xl text-xs text-yellow-800 flex items-start gap-2">
               <span className="font-bold text-lg leading-none">!</span>

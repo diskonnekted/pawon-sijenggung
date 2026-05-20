@@ -57,6 +57,12 @@ export const orderType = defineType({
     }),
     defineField({
       name: 'totalAmount',
+      title: 'Total Pembayaran',
+      type: 'number',
+    }),
+    defineField({
+      name: 'shippingFee',
+      title: 'Ongkos Kirim',
       type: 'number',
     }),
     defineField({

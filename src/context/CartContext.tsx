@@ -21,6 +21,8 @@ interface CartContextType {
   clearCart: () => void
   totalItems: number
   totalPrice: number
+  shippingFee: number
+  grandTotal: number
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -28,6 +30,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const isLoaded = useRef(false)
+  const shippingFee = items.length > 0 ? 5000 : 0 // Tarif flat Rp 5.000 untuk pengiriman desa
 
   // Load from localStorage
   useEffect(() => {
@@ -92,6 +95,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0)
   const totalPrice = items.reduce((sum, i) => sum + i.price * i.quantity, 0)
+  const grandTotal = totalPrice + shippingFee
 
   return (
     <CartContext.Provider
@@ -103,6 +107,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         clearCart,
         totalItems,
         totalPrice,
+        shippingFee,
+        grandTotal,
       }}
     >
       {children}
