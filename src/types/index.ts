@@ -74,3 +74,12 @@ export interface Article {
   excerpt?: string;
   content: PortableTextBlock[];
 }
+
+export interface IncubatorService {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  iconName: string;
+  order: number;
+}

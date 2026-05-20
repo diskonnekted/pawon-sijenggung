@@ -10,7 +10,7 @@ import { Product, Banner, Category, Service, Article } from "@/types";
 import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, ArrowRight, Rocket } from "lucide-react";
 
 interface Props {
   searchParams: Promise<{ q?: string }>;
@@ -234,6 +234,27 @@ export default async function Home({ searchParams }: Props) {
             </div>
           </section>
         )}
+
+        {/* Inkubator CTA Section */}
+        <section className="mb-20">
+          <div className="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
+            <div className="relative z-10 text-center md:text-left flex-grow">
+              <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-green-500/30">
+                Program Unggulan Desa
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight">Bawa Usaha Anda <br/>ke Level <span className="text-green-500">Profesional</span>.</h2>
+              <p className="text-slate-400 text-lg mb-10 font-medium max-w-xl">Bergabunglah dengan Inkubator UMKM PAWON. Dapatkan pelatihan, mentoring, bantuan legalitas, hingga akses modal gratis dari Kalurahan.</p>
+              <Link href="/inkubator" className="inline-flex items-center gap-3 bg-white text-slate-900 font-black px-10 py-4 rounded-2xl hover:bg-green-500 hover:text-white transition-all shadow-xl active:scale-95">
+                Pelajari Program
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+            <div className="relative z-10 hidden lg:block w-1/3 aspect-square rounded-[3rem] bg-gradient-to-br from-green-500/20 to-blue-500/20 backdrop-blur-3xl border border-white/10 p-12">
+               <Rocket className="w-full h-full text-green-500/40" />
+            </div>
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-600/10 blur-[120px] rounded-full -mr-32 -mt-32"></div>
+          </div>
+        </section>
       </div>
     </div>
   );

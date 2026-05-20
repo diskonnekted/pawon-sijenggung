@@ -220,6 +220,20 @@ export default async function MobileHome({ searchParams }: Props) {
             </div>
           </section>
         )}
+
+        {/* Inkubator Mobile CTA */}
+        <section className="pb-10">
+          <div className="bg-slate-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden">
+            <div className="relative z-10 text-center">
+               <h3 className="text-2xl font-black mb-4">Ingin Usaha Naik Kelas? 🚀</h3>
+               <p className="text-slate-400 text-sm mb-6 leading-relaxed">Dapatkan mentoring, bantuan modal, dan pelatihan gratis dari Inkubator UMKM Pondokrejo.</p>
+               <Link href="/inkubator" className="block w-full bg-green-600 text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all">
+                  Pelajari Program
+               </Link>
+            </div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-2xl rounded-full -mr-16 -mt-16"></div>
+          </div>
+        </section>
       </div>
     </div>
   );

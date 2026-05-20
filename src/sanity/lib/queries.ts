@@ -247,6 +247,17 @@ export const ARTICLE_BY_SLUG_QUERY = defineQuery(`
   }
 `)
 
+export const INCUBATOR_SERVICES_QUERY = defineQuery(`
+  *[_type == "incubatorService"] | order(order asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    iconName,
+    order
+  }
+`)
+
 export const ORDER_BY_NUMBER_QUERY = defineQuery(`
   *[_type == "order" && orderNumber == $orderNumber][0] {
     _id,
