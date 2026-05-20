@@ -54,7 +54,7 @@ export default async function Home({ searchParams }: Props) {
               Produk Lokal Pondokrejo
             </div>
             <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
-              PAWON - <span className="text-green-500">pasar online</span> warga pondokrejo
+              PAWON - <span className="text-green-500">Pasar Online</span> Warga Pondokrejo
             </h1>
             <p className="text-lg text-slate-400 mb-10 leading-relaxed max-w-lg">
               Pasar digital resmi Kalurahan Pondokrejo. Temukan hasil bumi dan produk UMKM berkualitas tinggi langsung dari warga kita sendiri.
