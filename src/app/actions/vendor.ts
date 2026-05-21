@@ -16,6 +16,7 @@ export async function registerVendor(formData: { name: string, phone: string, ad
     
     const doc = {
       _type: 'vendor',
+      _id: `drafts.${Math.random().toString(36).substr(2, 9)}`, // Create as DRAFT
       name: formData.name,
       slug: { _type: 'slug', current: slug },
       phone: formData.phone,
