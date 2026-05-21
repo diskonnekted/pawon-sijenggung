@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
-import { ShoppingCart, BadgeCheck } from 'lucide-react'
+import { ShoppingCart, BadgeCheck, CheckCircle2 } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 import { Product } from '@/types'
 
