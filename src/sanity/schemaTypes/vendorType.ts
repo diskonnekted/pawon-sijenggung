@@ -56,7 +56,7 @@ export const vendorType = defineType({
       title: 'Pesan Saat Tutup',
       type: 'string',
       description: 'Contoh: "Maaf, kami sedang libur Lebaran, buka kembali tanggal 10 Mei."',
-      hidden: ({ document }) => document?.isOpen,
+      hidden: ({ document }) => !!document?.isOpen,
     }),
     defineField({
       name: 'isVerified',
