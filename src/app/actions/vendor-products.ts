@@ -58,12 +58,13 @@ export async function createVendorProduct(vendorId: string, data: {
   price: number,
   stock: number,
   description?: string,
-  assetId: string
+  assetId: string,
+  categoryIds?: string[]
 }) {
   try {
     const slug = data.name.toLowerCase().replace(/\s+/g, '-').slice(0, 200) + '-' + Math.random().toString(36).substr(2, 5)
     
-    const doc = {
+    const doc: any = {
       _type: 'product',
       name: data.name,
       slug: { _type: 'slug', current: slug },
@@ -81,6 +82,14 @@ export async function createVendorProduct(vendorId: string, data: {
         _type: 'reference',
         _ref: vendorId,
       },
+    }
+
+    if (data.categoryIds && data.categoryIds.length > 0) {
+      doc.categories = data.categoryIds.map(id => ({
+        _type: 'reference',
+        _ref: id,
+        _key: Math.random().toString(36).substr(2, 9)
+      }))
     }
 
     // Buat sebagai dokumen baru. 

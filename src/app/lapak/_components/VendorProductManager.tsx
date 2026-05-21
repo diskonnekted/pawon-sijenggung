@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { getVendorProducts, createVendorProduct, uploadImageToSanity, deleteVendorProduct } from '@/app/actions/vendor-products'
-import { Package, Plus, Trash2, Image as ImageIcon, Loader2, X, CheckCircle2, DollarSign, Database } from 'lucide-react'
+import { Package, Plus, Trash2, Image as ImageIcon, Loader2, X, CheckCircle2, DollarSign, Database, Tags } from 'lucide-react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
+import { sanityFetch } from '@/sanity/lib/live'
+import { CATEGORIES_QUERY } from '@/sanity/lib/queries'
 
 export default function VendorProductManager({ vendorId }: { vendorId: string }) {
   const [products, setProducts] = useState<any[]>([])
+  const [categories, setCategories] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [showAddForm, setShowAddForm] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -17,11 +20,13 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
   const [newPrice, setNewPrice] = useState('')
   const [newStock, setNewStock] = useState('')
   const [newDesc, setNewDesc] = useState('')
+  const [newCategoryId, setNewCategoryId] = useState('')
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 
   useEffect(() => {
     fetchProducts()
+    fetchCategories()
   }, [])
 
   const fetchProducts = async () => {
@@ -29,6 +34,11 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
     const res = await getVendorProducts(vendorId)
     if (res.success) setProducts(res.data)
     setLoading(false)
+  }
+
+  const fetchCategories = async () => {
+    const { data } = await sanityFetch({ query: CATEGORIES_QUERY }) as { data: any[] }
+    if (data) setCategories(data)
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +52,7 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!selectedFile) return alert('Pilih foto produk terlebih dahulu.')
+    if (!newCategoryId) return alert('Silakan pilih kategori produk.')
 
     setSubmitting(true)
     
@@ -62,7 +73,8 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
       price: Number(newPrice),
       stock: Number(newStock),
       description: newDesc,
-      assetId: uploadRes.assetId
+      assetId: uploadRes.assetId,
+      categoryIds: [newCategoryId]
     })
 
     if (productRes.success) {
@@ -70,6 +82,7 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
       setNewPrice('')
       setNewStock('')
       setNewDesc('')
+      setNewCategoryId('')
       setSelectedFile(null)
       setPreviewUrl(null)
       setShowAddForm(false)
@@ -223,6 +236,26 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
                     value={newDesc}
                     onChange={(e) => setNewDesc(e.target.value)}
                   />
+
+                  {/* Category Selection */}
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1 flex items-center gap-1">
+                      <Tags className="w-3 h-3" /> Pilih Kategori
+                    </label>
+                    <select
+                      required
+                      className="w-full p-5 bg-slate-50 border-none rounded-3xl focus:ring-2 focus:ring-green-600 outline-none transition-all font-bold text-slate-900 appearance-none cursor-pointer"
+                      value={newCategoryId}
+                      onChange={(e) => setNewCategoryId(e.target.value)}
+                    >
+                      <option value="">-- Pilih Kategori --</option>
+                      {categories.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                          {cat.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
 
