@@ -10,8 +10,10 @@ import { articleType } from './articleType'
 import { customerType } from './customerType'
 import { incubatorServiceType } from './incubatorServiceType'
 import { incubatorSettingsType } from './incubatorSettingsType'
+import { appSettingsType } from './appSettingsType'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
+  appSettingsType,
   vendorType,
   productType,
   courierType,

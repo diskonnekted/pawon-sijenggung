@@ -287,6 +287,15 @@ export const INCUBATOR_SETTINGS_QUERY = defineQuery(`
   }
 `)
 
+export const APP_SETTINGS_QUERY = defineQuery(`
+  *[_type == "appSettings"][0] {
+    adminPhone,
+    defaultShippingFee,
+    siteName,
+    isMaintenance
+  }
+`)
+
 export const ORDER_BY_NUMBER_QUERY = defineQuery(`
   *[_type == "order" && orderNumber == $orderNumber][0] {
     _id,

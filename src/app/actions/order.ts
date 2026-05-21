@@ -4,6 +4,7 @@ import { createClient } from 'next-sanity'
 import { OrderFormData } from '@/types'
 import { CartItem } from '@/context/CartContext'
 import { formatOrderMessage, sendWhatsAppNotification } from '@/sanity/lib/whatsapp'
+import { APP_SETTINGS_QUERY } from '@/sanity/lib/queries'
 
 const writeClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -15,6 +16,10 @@ const writeClient = createClient({
 
 export async function createOrder(formData: OrderFormData, items: CartItem[], totalAmount: number, shippingFee: number, customerId?: string) {
   try {
+    // 0. Ambil Pengaturan Aplikasi (Nomor Admin, dll)
+    const settings = await writeClient.fetch(APP_SETTINGS_QUERY)
+    const adminPhone = settings?.adminPhone || '081328128315' // Fallback ke nomor awal jika belum diset
+
     // 1. Cek apakah ada vendor yang sedang tutup
     const productIds = items.map(i => i._id)
     const vendorsStatusQuery = `*[_type == "product" && _id in $productIds]{
@@ -81,8 +86,8 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
       )
 
       // 1. Kirim ke Admin
-      console.log('Sending to Admin...')
-      await sendWhatsAppNotification('081328128315', waMessage)
+      console.log('Sending to Admin:', adminPhone)
+      await sendWhatsAppNotification(adminPhone, waMessage)
 
       // 2. Kirim ke Pembeli
       console.log('Sending to Buyer:', formData.phone)
@@ -124,8 +129,11 @@ export async function updateOrderStatus(orderNumber: string, newStatus: string, 
       .commit()
 
     // Notifikasi ke Admin bahwa ada perubahan status
+    const settings = await writeClient.fetch(APP_SETTINGS_QUERY)
+    const adminPhone = settings?.adminPhone || '081328128315'
+
     const adminMsg = `🔄 *UPDATE STATUS PESANAN*\n------------------\n🆔 *No:* ${orderNumber}\n👤 *User:* ${order.customerName}\n📈 *Status Baru:* ${newStatus}\n📝 *Catatan:* ${note || '-'}\n------------------`
-    await sendWhatsAppNotification('081328128315', adminMsg)
+    await sendWhatsAppNotification(adminPhone, adminMsg)
 
     return { success: true }
   } catch (error) {
