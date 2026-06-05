@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   themeColor: "#16a34a",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo-transparent.png",
+    apple: "/logo-transparent.png",
   },
   appleWebApp: {
     capable: true,
@@ -73,7 +73,7 @@ export default async function RootLayout({
                     <div className="flex items-center gap-3 mb-6">
                       <div className="relative w-10 h-10">
                         <Image
-                          src="/logo.png"
+                          src="/logo-transparent.png"
                           alt="Logo PAWON"
                           fill
                           className="object-contain"

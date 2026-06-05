@@ -50,7 +50,7 @@ export default async function MobileHome({ searchParams }: Props) {
           
           <div className="relative z-20 w-full">
             <div className="inline-flex items-center gap-2 bg-white/10 text-white px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-white/20 backdrop-blur-md">
-              <Image src="/logo.png" alt="Logo" width={16} height={16} className="object-contain" />
+              <Image src="/logo-transparent.png" alt="Logo" width={16} height={16} className="object-contain" />
               Produk Lokal Sijenggung
             </div>
             <h1 className="text-4xl font-black text-white leading-tight tracking-tight mb-4">
