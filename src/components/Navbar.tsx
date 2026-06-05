@@ -22,9 +22,14 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span className="text-xl font-black tracking-tighter text-slate-900">
-            PA<span className="text-green-600">WON</span>
-          </span>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-tighter text-slate-900 leading-none">
+              PA<span className="text-green-600">WON</span>
+            </span>
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">
+              Desa Sijenggung
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
