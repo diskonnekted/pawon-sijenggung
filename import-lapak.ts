@@ -61,7 +61,7 @@ async function migrate() {
     // 1. Create Category
     let categoryId = null
     if (attr.kategori && attr.kategori.kategori) {
-      const catSlug = slugify(attr.kategori.kategori, { lower: true })
+      const catSlug = slugify(attr.kategori.kategori)
       categoryId = `category-${catSlug}`
       await client.createIfNotExists({
         _id: categoryId,
@@ -75,7 +75,7 @@ async function migrate() {
     // 2. Create Vendor
     let vendorId = null
     if (attr.pelapak && attr.pelapak.penduduk && attr.pelapak.penduduk.nama) {
-      const vendorSlug = slugify(attr.pelapak.penduduk.nama, { lower: true })
+      const vendorSlug = slugify(attr.pelapak.penduduk.nama)
       vendorId = `vendor-${vendorSlug}`
       await client.createIfNotExists({
         _id: vendorId,
@@ -100,7 +100,7 @@ async function migrate() {
        continue;
     }
 
-    const prodSlug = slugify(attr.nama, { lower: true })
+    const prodSlug = slugify(attr.nama)
     const productId = `product-${p.id}-${prodSlug}`
     
     const productDoc: any = {
