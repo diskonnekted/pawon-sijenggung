@@ -84,7 +84,7 @@ export default async function RootLayout({
                       </span>
                     </div>
                     <p className="text-slate-500 leading-relaxed font-medium">
-                      Pasar Warga Sijenggung (PAWON) adalah inisiatif marketplace digital resmi milik Desa Sijenggung untuk menghubungkan produk dan jasa warga langsung ke tangan pembeli.
+                      Pasar Warga Online Desa Sijenggung adalah inisiatif marketplace digital resmi milik Desa Sijenggung untuk menghubungkan produk dan jasa warga langsung ke tangan pembeli.
                     </p>
                   </div>
                   
