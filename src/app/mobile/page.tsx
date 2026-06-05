@@ -40,7 +40,7 @@ export default async function MobileHome({ searchParams }: Props) {
       {!isSearching && (
         <section className="relative h-[50vh] flex items-end p-6 overflow-hidden">
           <Image 
-            src="/hero.jpg" 
+            src="/hero-sijenggung.png" 
             alt="Hero" 
             fill 
             className="object-cover z-0"

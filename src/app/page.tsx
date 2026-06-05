@@ -40,7 +40,7 @@ export default async function Home({ searchParams }: Props) {
           {/* Background Image with Overlay */}
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
-            style={{ backgroundImage: "url('/hero.jpg')" }}
+            style={{ backgroundImage: "url('/hero-sijenggung.png')" }}
           >
             <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px]"></div>
           </div>
