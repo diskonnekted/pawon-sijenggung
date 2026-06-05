@@ -39,7 +39,8 @@ _Mohon segera diproses dan hubungi pemesan jika diperlukan. Terima kasih!_`
  * Mengirim pesan WhatsApp menggunakan API Fonnte.
  */
 export async function sendWhatsAppNotification(target: string, message: string) {
-  const token = process.env.FONNTE_API_TOKEN
+  // Using the new token directly to bypass OS environment variable conflicts
+  const token = process.env.FONNTE_NEW_TOKEN || 'bxWCvLcukyYH4ky6eDur'
 
   if (!token) {
     console.warn('FONNTE_API_TOKEN tidak ditemukan di environment variables.')
