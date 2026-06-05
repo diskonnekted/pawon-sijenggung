@@ -6,7 +6,7 @@ import { structure } from './src/sanity/structure'
 
 export default defineConfig({
   name: 'default',
-  title: 'Pondokrejo Marketplace',
+  title: 'Sijenggung Marketplace',
 
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,

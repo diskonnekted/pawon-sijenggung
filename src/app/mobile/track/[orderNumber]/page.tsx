@@ -123,7 +123,7 @@ export default async function MobileOrderDetailPage({ params }: Props) {
                   </div>
                   <div>
                     <p className="font-black text-lg">{order.courier.name}</p>
-                    <p className="text-slate-400 text-xs font-medium">Kurir Kalurahan Pondokrejo</p>
+                    <p className="text-slate-400 text-xs font-medium">Kurir Desa Sijenggung</p>
                   </div>
                 </div>
                 <a 

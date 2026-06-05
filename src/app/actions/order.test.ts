@@ -19,7 +19,7 @@ describe('Order Server Action', () => {
     const formData = {
       name: 'Budi',
       phone: '08123',
-      address: 'Pondokrejo'
+      address: 'Sijenggung'
     }
     const items = [
       { _id: 'p1', name: 'Produk 1', price: 10000, quantity: 2, image: {} as any, vendorName: 'UMKM' }

@@ -93,7 +93,7 @@ export default async function IncubatorDetailPage({ params }: Props) {
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                  <span>Akses eksklusif ke jaringan pemasaran Kalurahan Pondokrejo.</span>
+                  <span>Akses eksklusif ke jaringan pemasaran Desa Sijenggung.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0" />
@@ -123,7 +123,7 @@ export default async function IncubatorDetailPage({ params }: Props) {
           </div>
 
           <div className="text-center">
-            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8">Program Resmi Kalurahan Pondokrejo</h4>
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8">Program Resmi Desa Sijenggung</h4>
             <div className="inline-flex gap-8 items-center opacity-30 grayscale">
                <span className="font-black text-2xl tracking-tighter">PAWON</span>
                <div className="w-1.5 h-1.5 bg-slate-900 rounded-full" />

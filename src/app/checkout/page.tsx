@@ -88,7 +88,7 @@ export default function CheckoutPage() {
               Notifikasi Terkirim
             </p>
             <p className="mb-0 text-xs leading-relaxed">
-              Kami telah mengirimkan detail pesanan ke WhatsApp Anda. Admin Kalurahan akan segera memproses pesanan ini.
+              Kami telah mengirimkan detail pesanan ke WhatsApp Anda. Admin Desa akan segera memproses pesanan ini.
             </p>
           </div>
 
@@ -135,7 +135,7 @@ export default function CheckoutPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-1">Alamat Lengkap (Pondokrejo)</label>
+              <label className="block text-sm font-bold text-gray-700 mb-1">Alamat Lengkap (Sijenggung)</label>
               <textarea
                 required
                 rows={3}

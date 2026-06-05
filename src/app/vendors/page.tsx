@@ -13,10 +13,10 @@ export default async function VendorsPage() {
     <div className="container mx-auto px-4 py-12">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-4 tracking-tighter">
-          UMKM <span className="text-green-600">Pondokrejo</span>.
+          UMKM <span className="text-green-600">Sijenggung</span>.
         </h1>
         <p className="text-slate-500 font-medium max-w-2xl mx-auto">
-          Dukung tetangga dengan berbelanja langsung dari pelaku usaha lokal terverifikasi di kalurahan kita.
+          Dukung tetangga dengan berbelanja langsung dari pelaku usaha lokal terverifikasi di desa kita.
         </p>
       </div>
 
@@ -54,10 +54,10 @@ export default async function VendorsPage() {
               </h2>
               <div className="flex items-center gap-2 text-slate-400 text-sm font-bold mb-4">
                 <MapPin className="w-4 h-4 text-green-600" />
-                <span className="line-clamp-1">{vendor.address || 'Pondokrejo'}</span>
+                <span className="line-clamp-1">{vendor.address || 'Sijenggung'}</span>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-3 font-medium">
-                {vendor.description || 'Pelaku UMKM kebanggaan kalurahan Pondokrejo yang menyediakan produk berkualitas.'}
+                {vendor.description || 'Pelaku UMKM kebanggaan desa Sijenggung yang menyediakan produk berkualitas.'}
               </p>
             </div>
 

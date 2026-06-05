@@ -33,7 +33,7 @@ export default function MobileRegisterCourierPage() {
         </div>
         <h1 className="text-3xl font-black text-slate-900 mb-2">Terdaftar!</h1>
         <p className="text-slate-500 mb-10 px-4">
-          Data Kurir Anda sedang diverifikasi oleh Admin Kalurahan Pondokrejo.
+          Data Kurir Anda sedang diverifikasi oleh Admin Desa Sijenggung.
         </p>
 
         <Link href="/" className="w-full max-w-sm bg-slate-900 text-white text-center font-black py-5 rounded-3xl shadow-xl active:scale-95 transition-all">
@@ -59,7 +59,7 @@ export default function MobileRegisterCourierPage() {
           </div>
           <h2 className="text-2xl font-black text-slate-900 mb-3">Gabung Tim Kurir</h2>
           <p className="text-slate-500 text-sm font-medium px-4">
-            Bantu pengiriman produk warga dan dapatkan penghasilan tambahan di kalurahan kita.
+            Bantu pengiriman produk warga dan dapatkan penghasilan tambahan di desa kita.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function MobileRegisterCourierPage() {
         <div className="mt-12 p-6 bg-blue-50 rounded-[2rem] border border-blue-100">
           <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 mb-2">Informasi</h4>
           <p className="text-xs font-bold text-blue-800 leading-relaxed">
-            Hanya untuk warga Kalurahan Pondokrejo. Admin akan menghubungi Anda untuk verifikasi identitas.
+            Hanya untuk warga Desa Sijenggung. Admin akan menghubungi Anda untuk verifikasi identitas.
           </p>
         </div>
       </main>

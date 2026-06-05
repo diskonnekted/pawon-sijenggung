@@ -111,7 +111,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <div className="prose prose-slate prose-lg mb-12">
             <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-4">Tentang Layanan Ini</h4>
             <p className="text-slate-600 leading-relaxed font-medium">
-              {service.description || "Dapatkan layanan profesional terbaik langsung dari ahlinya di Pondokrejo. Kami menjamin kualitas pengerjaan dan kepuasan Anda sebagai tetangga."}
+              {service.description || "Dapatkan layanan profesional terbaik langsung dari ahlinya di Sijenggung. Kami menjamin kualitas pengerjaan dan kepuasan Anda sebagai tetangga."}
             </p>
           </div>
 
@@ -123,7 +123,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href={`https://wa.me/${service.vendor.phone}?text=Halo, saya ingin memesan jasa ${service.name} di Pasar Pondokrejo.`}
+                  href={`https://wa.me/${service.vendor.phone}?text=Halo, saya ingin memesan jasa ${service.name} di Pasar Sijenggung.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-grow flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 text-white font-black py-5 px-8 rounded-[2rem] transition-all active:scale-95 shadow-xl shadow-green-600/30"
@@ -138,7 +138,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           <div className="mt-12 flex items-center gap-4 text-slate-400 text-sm font-bold bg-slate-50 p-6 rounded-3xl">
             <MapPin className="w-5 h-5 text-green-600" />
-            <span>Lokasi Layanan: {service.vendor.address || 'Seluruh Pondokrejo'}</span>
+            <span>Lokasi Layanan: {service.vendor.address || 'Seluruh Sijenggung'}</span>
           </div>
         </div>
       </div>

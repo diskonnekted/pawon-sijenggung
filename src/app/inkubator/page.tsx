@@ -60,10 +60,10 @@ export default async function IncubatorPage() {
             Inkubator <span className="text-green-500">UMKM</span> PAWON
           </h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
-            Program pendampingan komprehensif dari Kalurahan Pondokrejo untuk membantu warga membangun, mengembangkan, dan memajukan usaha hingga level profesional.
+            Program pendampingan komprehensif dari Desa Sijenggung untuk membantu warga membangun, mengembangkan, dan memajukan usaha hingga level profesional.
           </p>
           <a
-            href="https://wa.me/081234567890?text=Halo, saya ingin bergabung dengan Inkubator UMKM Pondokrejo."
+            href="https://wa.me/081234567890?text=Halo, saya ingin bergabung dengan Inkubator UMKM Sijenggung."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-black px-10 py-5 rounded-3xl transition-all shadow-xl shadow-green-600/30 hover:scale-105 active:scale-95"
@@ -114,7 +114,7 @@ export default async function IncubatorPage() {
           <div className="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
             <div className="relative z-10 text-center md:text-left flex-grow">
               <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight leading-tight">Membangun Ekonomi <br/>Mulai dari <span className="text-green-500">Tetangga</span>.</h2>
-              <p className="text-slate-400 text-lg mb-10 font-medium">Jangan biarkan usaha Anda jalan di tempat. Bergabunglah dengan puluhan UMKM Pondokrejo lainnya yang sudah naik kelas.</p>
+              <p className="text-slate-400 text-lg mb-10 font-medium">Jangan biarkan usaha Anda jalan di tempat. Bergabunglah dengan puluhan UMKM Sijenggung lainnya yang sudah naik kelas.</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
                    href="https://wa.me/081234567890" 

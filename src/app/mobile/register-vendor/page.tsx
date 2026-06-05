@@ -35,7 +35,7 @@ export default function MobileRegisterVendorPage() {
         </div>
         <h1 className="text-3xl font-black text-slate-900 mb-2">Terdaftar!</h1>
         <p className="text-slate-500 mb-10 px-4">
-          Data UMKM Anda sedang diverifikasi oleh Admin Kalurahan.
+          Data UMKM Anda sedang diverifikasi oleh Admin Desa.
         </p>
 
         <div className="bg-slate-50 p-6 rounded-[2.5rem] mb-10 text-left w-full max-w-sm">
@@ -44,7 +44,7 @@ export default function MobileRegisterVendorPage() {
             Apa Selanjutnya?
           </h4>
           <p className="text-sm font-medium text-slate-600 leading-relaxed">
-            Admin Kalurahan akan memverifikasi identitas dan alamat Anda. Kami akan menghubungi Anda via WhatsApp jika akun sudah aktif dan siap untuk mengunggah produk.
+            Admin Desa akan memverifikasi identitas dan alamat Anda. Kami akan menghubungi Anda via WhatsApp jika akun sudah aktif dan siap untuk mengunggah produk.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function MobileRegisterVendorPage() {
           </div>
           <h2 className="text-2xl font-black text-slate-900 mb-3">Buka Toko Online</h2>
           <p className="text-slate-500 text-sm font-medium px-4">
-            Jangkau pembeli di seluruh Pondokrejo dengan sistem COD dan kurir kalurahan.
+            Jangkau pembeli di seluruh Sijenggung dengan sistem COD dan kurir desa.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function MobileRegisterVendorPage() {
             <input
               required
               type="text"
-              placeholder="Alamat di Pondokrejo"
+              placeholder="Alamat di Sijenggung"
               className="w-full p-5 bg-slate-50 border-none rounded-3xl focus:ring-2 focus:ring-green-600 outline-none transition-all font-bold text-slate-900"
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
@@ -123,7 +123,7 @@ export default function MobileRegisterVendorPage() {
         <div className="mt-12 p-6 bg-amber-50 rounded-[2rem] border border-amber-100">
           <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-600 mb-2">Informasi</h4>
           <p className="text-xs font-bold text-amber-800 leading-relaxed">
-            Pendaftaran ini gratis dan hanya untuk warga dengan KTP/Domisili Pondokrejo.
+            Pendaftaran ini gratis dan hanya untuk warga dengan KTP/Domisili Sijenggung.
           </p>
         </div>
       </main>

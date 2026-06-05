@@ -115,9 +115,9 @@ export default async function ServicesPage({ searchParams }: Props) {
           <div className="flex items-center justify-between mb-10">
             <div>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight">
-                {category ? categories.find(c => c.slug === category)?.name : 'Layanan Jasa Kalurahan'}
+                {category ? categories.find(c => c.slug === category)?.name : 'Layanan Jasa Desa'}
               </h1>
-              <p className="text-slate-500 font-medium">Temukan tenaga ahli terpercaya di Pondokrejo</p>
+              <p className="text-slate-500 font-medium">Temukan tenaga ahli terpercaya di Sijenggung</p>
             </div>
           </div>
 

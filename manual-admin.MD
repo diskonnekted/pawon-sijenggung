@@ -1,12 +1,12 @@
 # 📖 Panduan Operasional Admin PAWON
-**Pasar Online Warga Pondokrejo**
+**Pasar Online Warga Sijenggung**
 
-Dokumen ini berisi panduan bagi Admin Kalurahan untuk mengelola data operasional, mulai dari pengaturan nomor WhatsApp, pengelolaan Penjual (UMKM), hingga penugasan Kurir.
+Dokumen ini berisi panduan bagi Admin Desa untuk mengelola data operasional, mulai dari pengaturan nomor WhatsApp, pengelolaan Penjual (UMKM), hingga penugasan Kurir.
 
 ---
 
 ## 🛠 1. Mengakses Dashboard Admin
-1.  Buka browser dan masuk ke URL: `https://pawon.pondokrejo.id/studio` (atau `http://localhost:3000/studio` saat pengembangan).
+1.  Buka browser dan masuk ke URL: `https://pawon.sijenggung.id/studio` (atau `http://localhost:3000/studio` saat pengembangan).
 2.  Login menggunakan akun Sanity Admin yang sudah terdaftar.
 
 ---
@@ -70,5 +70,5 @@ Sistem PAWON bekerja secara otomatis dengan alur sebagai berikut:
 *   **Toko Tutup**: Jika ada penjual yang melapor sedang libur, Admin bisa membantu mematikan status **"Status Toko Buka"** melalui dashboard ini agar tidak ada pesanan masuk yang terbengkalai.
 
 ---
-*Dibuat untuk Pemerintah Kalurahan Pondokrejo.*
+*Dibuat untuk Pemerintah Desa Sijenggung.*
 *Update terakhir: Mei 2026*

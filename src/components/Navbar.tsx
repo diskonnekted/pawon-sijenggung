@@ -16,7 +16,7 @@ export default function Navbar() {
           <div className="relative w-10 h-10 group-hover:scale-110 transition-transform">
             <Image
               src="/logo.webp"
-              alt="Logo Pasar Pondokrejo"
+              alt="Logo Pasar Sijenggung"
               fill
               className="object-contain"
               priority

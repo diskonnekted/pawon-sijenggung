@@ -72,7 +72,7 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
     // --- INTEGRASI FONNTE WHATSAPP ---
     if (result._id) {
       console.log('Starting WhatsApp notifications...')
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.pondokrejo.id'
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
       
       const waMessage = formatOrderMessage(
         orderNumber,
@@ -92,7 +92,7 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
       // 2. Kirim ke Pembeli
       console.log('Sending to Buyer:', formData.phone)
       const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
-      await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON PONDOKREJO*. Pesanan Anda *${orderNumber}* telah kami terima dan sedang diproses.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *COD*${buyerLinks}\n\nAdmin atau Kurir kami akan segera menghubungi Anda.`)
+      await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON SIJENGGUNG*. Pesanan Anda *${orderNumber}* telah kami terima dan sedang diproses.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *COD*${buyerLinks}\n\nAdmin atau Kurir kami akan segera menghubungi Anda.`)
 
       // 3. Kirim ke Penjual
       console.log('Sending to Seller...')

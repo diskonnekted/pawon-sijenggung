@@ -10,7 +10,7 @@ export default function TrackLandingPage() {
         </div>
         <h1 className="text-4xl font-black text-gray-900 mb-4">Lacak Pesanan Anda</h1>
         <p className="text-gray-600 mb-12 text-lg">
-          Gunakan nomor pesanan yang Anda dapatkan setelah checkout untuk melihat status pengiriman oleh Kurir Kalurahan Pondokrejo.
+          Gunakan nomor pesanan yang Anda dapatkan setelah checkout untuk melihat status pengiriman oleh Kurir Desa Sijenggung.
         </p>
         
         <TrackOrderForm />
@@ -20,7 +20,7 @@ export default function TrackLandingPage() {
           <ul className="list-disc ml-4 space-y-1">
             <li>Nomor pesanan diawali dengan <strong>ORD-</strong></li>
             <li>Status diperbarui secara real-time oleh kurir kami.</li>
-            <li>Jika ada kendala, hubungi Admin Kalurahan atau Penjual terkait.</li>
+            <li>Jika ada kendala, hubungi Admin Desa atau Penjual terkait.</li>
           </ul>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { BasketIcon, UserIcon, TagIcon, RocketIcon, MenuIcon } from '@sanity/ico
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Manajemen Pasar Pondokrejo')
+    .title('Manajemen Pasar Sijenggung')
     .items([
       // Group for Orders
       S.listItem()
@@ -73,7 +73,7 @@ export const structure: StructureResolver = (S) =>
             ])
         ),
       S.listItem()
-        .title('Kurir Kalurahan')
+        .title('Kurir Desa')
         .icon(RocketIcon)
         .child(S.documentTypeList('courier').title('Tim Kurir')),
       

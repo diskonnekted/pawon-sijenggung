@@ -30,12 +30,12 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const isLoaded = useRef(false)
-  const shippingFee = items.length > 0 ? 5000 : 0 // Tarif flat Rp 5.000 untuk pengiriman kalurahan
+  const shippingFee = items.length > 0 ? 5000 : 0 // Tarif flat Rp 5.000 untuk pengiriman desa
 
   // Load from localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('pondokrejo-cart')
+      const saved = localStorage.getItem('sijenggung-cart')
       if (saved) {
         try {
           // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -51,7 +51,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Save to localStorage
   useEffect(() => {
     if (isLoaded.current) {
-      localStorage.setItem('pondokrejo-cart', JSON.stringify(items))
+      localStorage.setItem('sijenggung-cart', JSON.stringify(items))
     }
   }, [items])
 
@@ -71,7 +71,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           price: product.price,
           image: product.image,
           quantity: 1,
-          vendorName: product.vendor?.name || 'UMKM Pondokrejo',
+          vendorName: product.vendor?.name || 'UMKM Sijenggung',
         },
       ]
     })

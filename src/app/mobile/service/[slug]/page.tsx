@@ -111,7 +111,7 @@ export default async function MobileServiceDetailPage({ params }: Props) {
         <div className="mb-8">
           <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-3">Deskripsi Layanan</h4>
           <p className="text-slate-600 leading-relaxed font-medium text-sm">
-            {service.description || "Layanan profesional berkualitas tinggi dari tenaga ahli berpengalaman di Pondokrejo."}
+            {service.description || "Layanan profesional berkualitas tinggi dari tenaga ahli berpengalaman di Sijenggung."}
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default async function MobileServiceDetailPage({ params }: Props) {
               </div>
               <div>
                 <h4 className="font-black">{service.vendor.name}</h4>
-                <p className="text-slate-400 text-[10px] font-medium">{service.vendor.address || 'Pondokrejo'}</p>
+                <p className="text-slate-400 text-[10px] font-medium">{service.vendor.address || 'Sijenggung'}</p>
               </div>
             </div>
           </div>

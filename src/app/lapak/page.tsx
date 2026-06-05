@@ -38,7 +38,7 @@ export default function VendorLoginPage() {
             <Store className="w-10 h-10 text-green-600" />
           </div>
           <h1 className="text-3xl font-black text-slate-900 tracking-tighter">Portal Penjual</h1>
-          <p className="text-slate-400 font-bold mt-2 text-sm uppercase tracking-widest">Warga Pondokrejo</p>
+          <p className="text-slate-400 font-bold mt-2 text-sm uppercase tracking-widest">Warga Sijenggung</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
@@ -100,7 +100,7 @@ export default function VendorLoginPage() {
         </form>
 
         <p className="text-center text-slate-400 text-xs mt-10 leading-relaxed">
-          Belum terdaftar? Hubungi <strong>Admin Kalurahan</strong> untuk mendaftarkan UMKM Anda di PAWON.
+          Belum terdaftar? Hubungi <strong>Admin Desa</strong> untuk mendaftarkan UMKM Anda di PAWON.
         </p>
       </div>
     </div>

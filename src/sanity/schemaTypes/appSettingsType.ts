@@ -18,14 +18,14 @@ export const appSettingsType = defineType({
       name: 'defaultShippingFee',
       title: 'Biaya Ongkir Flat',
       type: 'number',
-      description: 'Biaya kirim standar untuk wilayah Kalurahan Pondokrejo.',
+      description: 'Biaya kirim standar untuk wilayah Desa Sijenggung.',
       initialValue: 5000,
     }),
     defineField({
       name: 'siteName',
       title: 'Nama Aplikasi',
       type: 'string',
-      initialValue: 'PAWON PONDOKREJO',
+      initialValue: 'PAWON SIJENGGUNG',
     }),
     defineField({
       name: 'isMaintenance',

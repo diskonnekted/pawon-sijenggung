@@ -28,7 +28,7 @@ export const customerType = defineType({
     }),
     defineField({
       name: 'isVerified',
-      title: 'Sudah Diverifikasi Kalurahan?',
+      title: 'Sudah Diverifikasi Desa?',
       type: 'boolean',
       initialValue: false,
       description: 'Centang jika warga ini sudah terbukti nyata dan terpercaya.',

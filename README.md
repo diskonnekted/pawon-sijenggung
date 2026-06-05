@@ -1,13 +1,13 @@
-# PAWON (Pasar Warga Pondokrejo) 🍲⚡
+# PAWON (Pasar Warga Sijenggung) 🍲⚡
 
-**PAWON** adalah inisiatif marketplace digital resmi milik **Kalurahan Pondokrejo** yang dirancang untuk memperkuat ekonomi lokal. Nama PAWON sendiri merupakan akronim dari **Pasar Warga Pondokrejo**, sekaligus melambangkan kehangatan dapur (pawon) yang menjadi pusat kehidupan warga.
+**PAWON** adalah inisiatif marketplace digital resmi milik **Desa Sijenggung** yang dirancang untuk memperkuat ekonomi lokal. Nama PAWON sendiri merupakan akronim dari **Pasar Warga Sijenggung**, sekaligus melambangkan kehangatan dapur (pawon) yang menjadi pusat kehidupan warga.
 
 Aplikasi ini menghubungkan produk UMKM, hasil bumi, dan layanan jasa profesional warga langsung ke tangan pembeli dengan sistem yang modern, terverifikasi, dan ramah pengguna.
 
 ## 🚀 Fitur Utama
 
 ### 🛒 Marketplace Produk (UMKM)
-*   **Katalog Terverifikasi**: Semua produk telah diverifikasi oleh Admin Kalurahan untuk menjamin keaslian dan kualitas.
+*   **Katalog Terverifikasi**: Semua produk telah diverifikasi oleh Admin Desa untuk menjamin keaslian dan kualitas.
 *   **Seksi Promo & Terlaris**: Menampilkan produk unggulan dan penawaran spesial untuk warga.
 *   **Kategori Pilihan**: Pencarian produk berdasarkan kategori (Makanan, Kerajinan, Pertanian, dll) dengan tampilan elegan.
 
@@ -20,12 +20,12 @@ Aplikasi ini menghubungkan produk UMKM, hasil bumi, dan layanan jasa profesional
 *   **PWA Ready**: Dapat diinstal langsung di layar utama HP tanpa melalui Play Store.
 *   **Deteksi Otomatis**: Sistem secara cerdas menyajikan layout terbaik berdasarkan perangkat yang digunakan.
 
-### 📰 Kabar Kalurahan (Info)
-*   **Pusat Informasi**: Update resmi mengenai pelatihan UMKM, bantuan modal BUMKal, dan panduan resmi kalurahan.
-*   **Dukungan Pemerintah**: Pengumuman kegiatan yang bertujuan meningkatkan kapasitas pelaku usaha kalurahan.
+### 📰 Kabar Desa (Info)
+*   **Pusat Informasi**: Update resmi mengenai pelatihan UMKM, bantuan modal BUMKal, dan panduan resmi desa.
+*   **Dukungan Pemerintah**: Pengumuman kegiatan yang bertujuan meningkatkan kapasitas pelaku usaha desa.
 
 ### 🚚 Logistik & Tracking
-*   **Kurir Kalurahan**: Pengiriman barang ditangani oleh tenaga kurir resmi kalurahan.
+*   **Kurir Desa**: Pengiriman barang ditangani oleh tenaga kurir resmi desa.
 *   **Lacak Pesanan**: Fitur real-time untuk memantau status pengiriman paket.
 
 ## 🛠️ Tech Stack
@@ -42,8 +42,8 @@ Aplikasi ini menghubungkan produk UMKM, hasil bumi, dan layanan jasa profesional
 
 1.  **Clone Repository**:
     ```bash
-    git clone https://github.com/diskonnekted/pawon-pondokrejo.git
-    cd pawon-pondokrejo
+    git clone https://github.com/diskonnekted/pawon-sijenggung.git
+    cd pawon-sijenggung
     ```
 
 2.  **Instal Dependensi**:
@@ -82,8 +82,8 @@ Jika Anda menggunakan **Ubuntu** dengan **CloudPanel**:
 
 ## 🤝 Kontribusi
 
-Aplikasi ini dikembangkan untuk kemajuan warga Kalurahan Pondokrejo. Saran dan masukan sangat kami harapkan untuk pengembangan fitur ke depannya.
+Aplikasi ini dikembangkan untuk kemajuan warga Desa Sijenggung. Saran dan masukan sangat kami harapkan untuk pengembangan fitur ke depannya.
 
 ---
-**PAWON** - *Membangun Kalurahan dari Tetangga.*
-© 2026 Pemerintah Kalurahan Pondokrejo.
+**PAWON** - *Membangun Desa dari Tetangga.*
+© 2026 Pemerintah Desa Sijenggung.

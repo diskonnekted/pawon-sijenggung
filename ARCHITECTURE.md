@@ -1,6 +1,6 @@
 # PAWON Architecture 🏛️
 
-Dokumen ini menjelaskan pola desain dan struktur teknis yang digunakan dalam pengembangan aplikasi **PAWON (Pasar Warga Pondokrejo)**.
+Dokumen ini menjelaskan pola desain dan struktur teknis yang digunakan dalam pengembangan aplikasi **PAWON (Pasar Warga Sijenggung)**.
 
 ## 1. Core Framework: Next.js 15+ (App Router)
 Aplikasi ini dibangun menggunakan arsitektur modern Next.js dengan pola **Server-First**:
@@ -11,7 +11,7 @@ Aplikasi ini dibangun menggunakan arsitektur modern Next.js dengan pola **Server
 PAWON menggunakan pemisahan penuh antara *Content* dan *Code*:
 - **Sanity as Database**: Semua data (Produk, Jasa, UMKM, Artikel, Pesanan) dikelola melalui Sanity Studio.
 - **GROQ Queries**: Pengambilan data menggunakan bahasa query GROQ yang sangat efisien untuk relasi antar dokumen (misal: mengambil produk beserta data penjualnya dalam satu request).
-- **Embedded Studio**: Dashboard admin (`/studio`) terintegrasi langsung di dalam aplikasi Next.js, memudahkan pengelola Kalurahan dalam melakukan update data.
+- **Embedded Studio**: Dashboard admin (`/studio`) terintegrasi langsung di dalam aplikasi Next.js, memudahkan pengelola Desa dalam melakukan update data.
 
 ## 3. Adaptive Mobile Strategy
 PAWON menggunakan strategi **Hybrid Mobile Detection**:

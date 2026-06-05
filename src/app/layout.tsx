@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pasar Pondokrejo - Marketplace Desa",
-  description: "Marketplace lokal untuk warga Kalurahan Pondokrejo",
+  title: "Pasar Sijenggung - Marketplace Desa",
+  description: "Marketplace lokal untuk warga Desa Sijenggung",
   manifest: "/manifest.json",
   themeColor: "#16a34a",
   icons: {
@@ -84,14 +84,14 @@ export default async function RootLayout({
                       </span>
                     </div>
                     <p className="text-slate-500 leading-relaxed font-medium">
-                      Pasar Warga Pondokrejo (PAWON) adalah inisiatif marketplace digital resmi milik Kalurahan Pondokrejo untuk menghubungkan produk dan jasa warga langsung ke tangan pembeli.
+                      Pasar Warga Sijenggung (PAWON) adalah inisiatif marketplace digital resmi milik Desa Sijenggung untuk menghubungkan produk dan jasa warga langsung ke tangan pembeli.
                     </p>
                   </div>
                   
                   <div>
                     <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-6">Tentang Kami</h4>
                     <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                      PAWON hadir untuk memperkuat ekonomi lokal dengan semangat gotong-royong. Semua transaksi di sini membantu pertumbuhan UMKM dan kemandirian ekonomi kalurahan kita.
+                      PAWON hadir untuk memperkuat ekonomi lokal dengan semangat gotong-royong. Semua transaksi di sini membantu pertumbuhan UMKM dan kemandirian ekonomi desa kita.
                     </p>
                     <div className="flex gap-4">
                       <div className="bg-green-50 text-green-700 px-3 py-1 rounded-lg text-[10px] font-black uppercase">Real UMKM</div>
@@ -100,7 +100,7 @@ export default async function RootLayout({
                   </div>
 
                   <div>
-                    <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-6">Layanan Kalurahan</h4>
+                    <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-6">Layanan Desa</h4>
                     <ul className="space-y-4 text-sm font-bold">
                       <li>
                         <Link href="/register-vendor" className="text-slate-500 hover:text-green-600 transition-colors">Daftar Jadi Penjual</Link>
@@ -131,10 +131,10 @@ export default async function RootLayout({
 
                 <div className="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                   <div className="text-gray-400 text-xs font-medium">
-                    &copy; 2026 Kalurahan Pondokrejo. PAWON: Pasar Warga Pondokrejo.
+                    &copy; 2026 Desa Sijenggung. PAWON: Pasar Warga Sijenggung.
                   </div>
                   <div className="flex gap-6 text-xs font-black uppercase tracking-widest text-slate-400">
-                    <span>Membangun Kalurahan dari Tetangga</span>
+                    <span>Membangun Desa dari Tetangga</span>
                   </div>
                 </div>
               </div>

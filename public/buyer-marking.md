@@ -72,7 +72,7 @@ function LocationWatcher({ position, onMove }) {
 }
 
 export default function LocationMarker({ onLocationSelect, initialPosition = null }) {
-  const [position, setPosition] = useState(initialPosition || { lat: -7.7956, lng: 110.3695 }); // Default: Pondokrejo
+  const [position, setPosition] = useState(initialPosition || { lat: -7.7956, lng: 110.3695 }); // Default: Sijenggung
   const [method, setMethod] = useState(null);
   const [address, setAddress] = useState('');
   const [loading, setLoading] = useState(false);
@@ -172,11 +172,11 @@ export default function LocationMarker({ onLocationSelect, initialPosition = nul
           onClick={() => {
             setPosition({ lat: -7.7956, lng: 110.3695 });
             setMethod('manual');
-            setAddress('Area Pondokrejo (Default)');
+            setAddress('Area Sijenggung (Default)');
           }}
           className="px-4 py-2 bg-black hover:bg-gray-800 text-white rounded-lg font-medium transition"
         >
-          🎯 Reset ke Pusat Pondokrejo
+          🎯 Reset ke Pusat Sijenggung
         </button>
       </div>
 
@@ -364,7 +364,7 @@ export async function POST(req) {
     // Kirim notifikasi ke Admin & Kurir via Fonnte
     await sendWhatsApp({
       target: process.env.ADMIN_PHONE,
-      message: `🛒 Pesanan Baru #${order._id.slice(-6)}\n📍 Lokasi: ${buyerLocation?.address || 'Belum ditandai'}\n🗺️ Koordinat: ${buyerLocation?.lat}, ${buyerLocation?.lng}\n🔗 Detail: https://pawon.pondokrejo.id/studio/orders/${order._id}`
+      message: `🛒 Pesanan Baru #${order._id.slice(-6)}\n📍 Lokasi: ${buyerLocation?.address || 'Belum ditandai'}\n🗺️ Koordinat: ${buyerLocation?.lat}, ${buyerLocation?.lng}\n🔗 Detail: https://pawon.sijenggung.id/studio/orders/${order._id}`
     });
 
     return Response.json({ success: true, orderId: order._id });
@@ -426,9 +426,9 @@ Tambahkan di `globals.css` untuk konsistensi tema:
 
 ---
 
-## 💡 Tips Tambahan untuk Area Pondokrejo
+## 💡 Tips Tambahan untuk Area Sijenggung
 
-1. **Default View**: Set center peta ke `[-7.7956, 110.3695]` (pusat Pondokrejo) agar user tidak perlu zoom jauh.
+1. **Default View**: Set center peta ke `[-7.7956, 110.3695]` (pusat Sijenggung) agar user tidak perlu zoom jauh.
 2. **Offline Fallback**: Jika geolocation gagal, tampilkan pesan:  
    *"GPS tidak tersedia? Silakan klik pada peta di sekitar rumah Anda."*
 3. **Link Peta Eksternal**: Di notifikasi WA, tambahkan link langsung ke OSM:  

@@ -51,12 +51,12 @@ export default async function Home({ searchParams }: Props) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-50"></span>
               </span>
-              Produk Lokal Pondokrejo
+              Produk Lokal Sijenggung
             </div>            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
-              PAWON - <span className="text-green-500">Pasar Online</span> Warga Pondokrejo
+              PAWON - <span className="text-green-500">Pasar Online</span> Warga Sijenggung
             </h1>
             <p className="text-lg text-slate-400 mb-10 leading-relaxed max-w-lg">
-              Pasar digital resmi Kalurahan Pondokrejo. Temukan hasil bumi dan produk UMKM berkualitas tinggi langsung dari warga kita sendiri.
+              Pasar digital resmi Desa Sijenggung. Temukan hasil bumi dan produk UMKM berkualitas tinggi langsung dari warga kita sendiri.
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#products" className="bg-green-600 text-white font-black px-10 py-4 rounded-2xl hover:bg-green-700 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-green-600/30">
@@ -154,7 +154,7 @@ export default async function Home({ searchParams }: Props) {
             <div className="flex items-center justify-between mb-10">
               <div>
                 <h2 className="text-3xl font-black text-slate-900 tracking-tight">Paling Laris 🔥</h2>
-                <p className="text-slate-500 font-medium">Produk favorit warga Pondokrejo</p>
+                <p className="text-slate-500 font-medium">Produk favorit warga Sijenggung</p>
               </div>
               <Link href="/products" className="text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
                 Lihat Semua &rarr;
@@ -174,8 +174,8 @@ export default async function Home({ searchParams }: Props) {
         <section className="mb-20">
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">Jasa Profesional Kalurahan 🛠️</h2>
-              <p className="text-slate-500 font-medium">Layanan terpercaya langsung dari tenaga ahli Pondokrejo</p>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight">Jasa Profesional Desa 🛠️</h2>
+              <p className="text-slate-500 font-medium">Layanan terpercaya langsung dari tenaga ahli Sijenggung</p>
             </div>
             <Link href="/services" className="text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
               Lihat Semua Jasa &rarr;
@@ -198,7 +198,7 @@ export default async function Home({ searchParams }: Props) {
                 <span className="text-blue-600 text-[10px] font-black uppercase tracking-wider">Produk Terverifikasi</span>
               </div>
               <h2 className="text-3xl font-black text-slate-900 tracking-tight">Barang Nyata & Terpercaya ✅</h2>
-              <p className="text-slate-500 font-medium">Semua produk di bawah ini telah diverifikasi langsung oleh Pemerintah Kalurahan Pondokrejo</p>
+              <p className="text-slate-500 font-medium">Semua produk di bawah ini telah diverifikasi langsung oleh Pemerintah Desa Sijenggung</p>
             </div>
             <Link href="/products" className="hidden sm:block text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
               Lihat Semua &rarr;
@@ -222,8 +222,8 @@ export default async function Home({ searchParams }: Props) {
           <section className="mb-20">
             <div className="flex items-center justify-between mb-10">
               <div>
-                <h2 className="text-3xl font-black text-slate-900 tracking-tight">Kabar Kalurahan 📰</h2>
-                <p className="text-slate-500 font-medium">Info pelatihan, dukungan UMKM, dan pengumuman resmi Kalurahan Pondokrejo</p>
+                <h2 className="text-3xl font-black text-slate-900 tracking-tight">Kabar Desa 📰</h2>
+                <p className="text-slate-500 font-medium">Info pelatihan, dukungan UMKM, dan pengumuman resmi Desa Sijenggung</p>
               </div>
               <Link href="/info" className="text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
                 Lihat Semua Berita &rarr;
@@ -242,10 +242,10 @@ export default async function Home({ searchParams }: Props) {
           <div className="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
             <div className="relative z-10 text-center md:text-left flex-grow">
               <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-green-500/30">
-                Program Unggulan Kalurahan
+                Program Unggulan Desa
               </div>
               <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight">Bawa Usaha Anda <br/>ke Level <span className="text-green-500">Profesional</span>.</h2>
-              <p className="text-slate-400 text-lg mb-10 font-medium max-w-xl">Bergabunglah dengan Inkubator UMKM PAWON. Dapatkan pelatihan, mentoring, bantuan legalitas, hingga akses modal gratis dari Kalurahan.</p>
+              <p className="text-slate-400 text-lg mb-10 font-medium max-w-xl">Bergabunglah dengan Inkubator UMKM PAWON. Dapatkan pelatihan, mentoring, bantuan legalitas, hingga akses modal gratis dari Desa.</p>
               <Link href="/inkubator" className="inline-flex items-center gap-3 bg-white text-slate-900 font-black px-10 py-4 rounded-2xl hover:bg-green-500 hover:text-white transition-all shadow-xl active:scale-95">
                 Pelajari Program
                 <ArrowRight className="w-5 h-5" />

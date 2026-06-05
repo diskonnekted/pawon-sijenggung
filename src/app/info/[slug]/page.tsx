@@ -57,7 +57,7 @@ export default async function ArticleDetailPage({ params }: Props) {
         className="inline-flex items-center gap-2 text-slate-400 font-black text-xs uppercase tracking-widest mb-8 hover:text-green-600 transition-colors"
       >
         <ChevronLeft className="w-4 h-4" />
-        Kembali ke Info Kalurahan
+        Kembali ke Info Desa
       </Link>
 
       <div className="flex items-center gap-3 mb-6">
@@ -93,7 +93,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       <div className="mt-16 flex items-center justify-between p-8 bg-slate-900 rounded-[3rem] text-white">
         <div>
           <h4 className="font-black text-xl mb-1">Butuh bantuan lebih lanjut?</h4>
-          <p className="text-slate-400 text-sm font-medium">Hubungi Admin Kalurahan Pondokrejo via WhatsApp</p>
+          <p className="text-slate-400 text-sm font-medium">Hubungi Admin Desa Sijenggung via WhatsApp</p>
         </div>
         <button className="bg-green-600 p-4 rounded-2xl hover:bg-green-700 transition-all active:scale-95 shadow-xl shadow-green-600/20">
           <Share2 className="w-6 h-6" />

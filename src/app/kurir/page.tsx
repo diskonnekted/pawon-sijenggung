@@ -38,7 +38,7 @@ export default function CourierLoginPage() {
             <Truck className="w-10 h-10 text-blue-600" />
           </div>
           <h1 className="text-3xl font-black text-slate-900 tracking-tighter">Portal Kurir</h1>
-          <p className="text-slate-400 font-bold mt-2 text-sm uppercase tracking-widest">Pondokrejo Logistik</p>
+          <p className="text-slate-400 font-bold mt-2 text-sm uppercase tracking-widest">Sijenggung Logistik</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">

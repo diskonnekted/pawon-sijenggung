@@ -51,10 +51,10 @@ export default async function MobileHome({ searchParams }: Props) {
           <div className="relative z-20 w-full">
             <div className="inline-flex items-center gap-2 bg-white/10 text-white px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-white/20 backdrop-blur-md">
               <Image src="/logo.webp" alt="Logo" width={16} height={16} className="object-contain" />
-              Produk Lokal Pondokrejo
+              Produk Lokal Sijenggung
             </div>
             <h1 className="text-4xl font-black text-white leading-tight tracking-tight mb-4">
-              PAWON - <span className="text-green-500">Pasar Online</span> Warga Pondokrejo
+              PAWON - <span className="text-green-500">Pasar Online</span> Warga Sijenggung
             </h1>
           </div>
         </section>
@@ -183,7 +183,7 @@ export default async function MobileHome({ searchParams }: Props) {
             {services.length > 0 && (
               <section>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-black text-slate-900 tracking-tight">Jasa Kalurahan 🛠️</h2>
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">Jasa Desa 🛠️</h2>
                   <Link href="/services" className="text-xs font-black text-green-700 uppercase tracking-widest">
                     Semua &rarr;
                   </Link>
@@ -204,7 +204,7 @@ export default async function MobileHome({ searchParams }: Props) {
                 <div>
                   <div className="flex items-center gap-1 mb-1">
                     <BadgeCheck className="w-3 h-3 text-blue-500" />
-                    <span className="text-blue-600 text-[8px] font-black uppercase tracking-wider">Terverifikasi Kalurahan</span>
+                    <span className="text-blue-600 text-[8px] font-black uppercase tracking-wider">Terverifikasi Desa</span>
                   </div>
                   <h2 className="text-xl font-black text-slate-900 tracking-tight">Barang Nyata ✅</h2>
                 </div>
@@ -228,7 +228,7 @@ export default async function MobileHome({ searchParams }: Props) {
             {articles.length > 0 && (
               <section className="pb-10">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-black text-slate-900 tracking-tight">Kabar Kalurahan 📰</h2>
+                  <h2 className="text-xl font-black text-slate-900 tracking-tight">Kabar Desa 📰</h2>
                   <Link href="/info" className="text-xs font-black text-green-700 uppercase tracking-widest">
                     Semua &rarr;
                   </Link>
@@ -248,7 +248,7 @@ export default async function MobileHome({ searchParams }: Props) {
               <div className="bg-slate-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden">
                 <div className="relative z-10 text-center">
                    <h3 className="text-2xl font-black mb-4">Ingin Usaha Naik Kelas? 🚀</h3>
-                   <p className="text-slate-400 text-sm mb-6 leading-relaxed">Dapatkan mentoring, bantuan modal, dan pelatihan gratis dari Inkubator UMKM Pondokrejo.</p>
+                   <p className="text-slate-400 text-sm mb-6 leading-relaxed">Dapatkan mentoring, bantuan modal, dan pelatihan gratis dari Inkubator UMKM Sijenggung.</p>
                    <Link href="/inkubator" className="block w-full bg-green-600 text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all">
                       Pelajari Program
                    </Link>

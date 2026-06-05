@@ -63,7 +63,7 @@ export const vendorType = defineType({
       title: 'Status Verifikasi',
       type: 'boolean',
       initialValue: false,
-      description: 'Aktifkan ini jika UMKM sudah diverifikasi oleh Admin Kalurahan.',
+      description: 'Aktifkan ini jika UMKM sudah diverifikasi oleh Admin Desa.',
     }),
   ],
   preview: {

@@ -9,7 +9,7 @@ Untuk menerapkan fitur **tracking kurir pada aplikasi PAWON tanpa Google Maps**,
 | **OpenStreetMap + Leaflet.js** | Gratis, open-source, ringan, mudah diintegrasikan dengan React | Tidak ada routing otomatis bawaan (perlu plugin) | ✅ **Paling direkomendasikan** |
 | **Mapbox GL JS (Free Tier)** | UI modern, performa smooth, ada routing | Free tier terbatas (50k load/bulan), perlu API key | Opsi premium jika butuh fitur advanced |
 | **Static Map Image (OSM Static API)** | Sangat ringan, tidak perlu JS berat | Tidak interaktif, hanya gambar | Cocok untuk notifikasi WhatsApp |
-| **Custom SVG/Peta Kalurahan** | Full control, sangat ringan, offline-friendly | Harus buat manual, tidak scalable ke area lain | ✅ **Ideal untuk cakupan lokal Pondokrejo** |
+| **Custom SVG/Peta Desa** | Full control, sangat ringan, offline-friendly | Harus buat manual, tidak scalable ke area lain | ✅ **Ideal untuk cakupan lokal Sijenggung** |
 
 ### 💡 Rekomendasi Implementasi:
 ```bash
@@ -158,7 +158,7 @@ export default async function handler(req, res) {
 ## 🖥️ 5. Tampilan Tracking untuk Pembeli
 
 ### Opsi 1: Halaman Web Interaktif (Leaflet)
-- Pembeli buka `pawon.pondokrejo.id/track/[orderId]`
+- Pembeli buka `pawon.sijenggung.id/track/[orderId]`
 - Lihat peta dengan marker kurir (update tiap 30 detik via polling)
 
 ### Opsi 2: Timeline Status + Link Peta Eksternal
@@ -177,7 +177,7 @@ export default async function handler(req, res) {
 Kurir Bapak Slamet sedang dalam perjalanan ke alamat Anda.
 Perkiraan tiba: 15-20 menit.
 
-📍 Pantau posisi: https://pawon.pondokrejo.id/track/PAWON-123
+📍 Pantau posisi: https://pawon.sijenggung.id/track/PAWON-123
 ```
 
 ---
@@ -211,14 +211,14 @@ Perkiraan tiba: 15-20 menit.
 ### Fase 3: Optimasi (Opsional)
 - [ ] PWA untuk portal kurir (bisa jalan offline)
 - [ ] Kompresi koordinat untuk hemat bandwidth
-- [ ] Custom SVG map khusus area Pondokrejo
+- [ ] Custom SVG map khusus area Sijenggung
 ```
 
 ---
 
 ## 💡 Tips Hemat Resource untuk Area Lokal
 
-Karena cakupan PAWON hanya di **Kalurahan Pondokrejo**, Anda bisa:
+Karena cakupan PAWON hanya di **Desa Sijenggung**, Anda bisa:
 1. **Gunakan koordinat tetap** untuk titik-titik penting (balai, pos kamling, landmark)
 2. **Ganti peta interaktif dengan gambar statis** yang sudah ditandai zona
 3. **Gunakan sistem "zona"**: Kurir hanya update saat pindah zona (RT/RW), bukan koordinat presisi

@@ -1,5 +1,5 @@
 # 🍱 Panduan Penggunaan Aplikasi PAWON
-**Pasar Online Warga Pondokrejo**
+**Pasar Online Warga Sijenggung**
 
 Selamat datang di ekosistem digital **PAWON**. Aplikasi ini dirancang untuk menghubungkan warga, pelaku UMKM, dan kurir lokal dalam satu platform yang terintegrasi dengan WhatsApp.
 
@@ -16,7 +16,7 @@ Sistem PAWON membagi pengguna ke dalam 4 peran utama:
 ---
 
 ## 🛠️ 2. Panduan untuk ADMIN (Pusat Kendali)
-**Akses Dashboard**: `https://pawon.pondokrejo.id/studio`
+**Akses Dashboard**: `https://pawon.sijenggung.id/studio`
 
 ### A. Pengaturan Awal (Wajib)
 1.  Masuk ke menu **"Pengaturan Aplikasi"**.
@@ -31,7 +31,7 @@ Sistem PAWON membagi pengguna ke dalam 4 peran utama:
 ---
 
 ## 🏪 3. Panduan untuk PENJUAL (UMKM)
-**Akses Portal**: `https://pawon.pondokrejo.id/lapak`
+**Akses Portal**: `https://pawon.sijenggung.id/lapak`
 
 ### A. Login & Operasional
 1.  Login menggunakan Nomor WhatsApp dan PIN dari Admin.
@@ -46,7 +46,7 @@ Sistem PAWON membagi pengguna ke dalam 4 peran utama:
 ---
 
 ## 🚚 4. Panduan untuk KURIR
-**Akses Portal**: `https://pawon.pondokrejo.id/kurir`
+**Akses Portal**: `https://pawon.sijenggung.id/kurir`
 
 ### A. Menangani Pesanan Baru
 1.  Setiap ada warga belanja, Anda akan menerima pesan WhatsApp otomatis berisi rincian item, alamat tujuan, dan jumlah tagihan COD.
@@ -62,7 +62,7 @@ Kurir wajib menekan tombol status sesuai urutan:
 ---
 
 ## 🛍️ 5. Panduan untuk PEMBELI (WARGA)
-**Akses Web**: `https://pawon.pondokrejo.id`
+**Akses Web**: `https://pawon.sijenggung.id`
 
 ### A. Cara Belanja
 1.  Pilih produk atau jasa yang diinginkan.
@@ -89,5 +89,5 @@ Kurir wajib menekan tombol status sesuai urutan:
 *   **Android Push**: Menggunakan PushAlert (Izin akan diminta saat pertama kali buka web di HP).
 
 ---
-**PAWON** - *Membangun Kalurahan dari Tetangga.*
-© 2026 Pemerintah Kalurahan Pondokrejo.
+**PAWON** - *Membangun Desa dari Tetangga.*
+© 2026 Pemerintah Desa Sijenggung.

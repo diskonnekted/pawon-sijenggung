@@ -1,6 +1,6 @@
 # 🗺️ Roadmap Pengembangan: Sistem Geolokasi PAWON
 
-Berdasarkan rencana teknis di `buyer-marking.md` dan `tracking.md`, berikut adalah rencana pengembangan sistem pemetaan lokal untuk Kalurahan Pondokrejo menggunakan teknologi Open-Source (**Leaflet.js + OpenStreetMap**).
+Berdasarkan rencana teknis di `buyer-marking.md` dan `tracking.md`, berikut adalah rencana pengembangan sistem pemetaan lokal untuk Desa Sijenggung menggunakan teknologi Open-Source (**Leaflet.js + OpenStreetMap**).
 
 ---
 
@@ -43,7 +43,7 @@ Berdasarkan rencana teknis di `buyer-marking.md` dan `tracking.md`, berikut adal
 ## 📈 Keunggulan Strategis:
 1.  **Tanpa Biaya (Gratis)**: Tidak menggunakan Google Maps API yang berbayar mahal.
 2.  **Privasi Terjamin**: Data lokasi hanya digunakan untuk operasional pengantaran desa dan bisa dihapus otomatis setelah pesanan selesai.
-3.  **Cakupan Lokal**: Sangat akurat untuk pemetaan wilayah RT/RW di Pondokrejo yang sering tidak terindeks sempurna di Google Maps.
+3.  **Cakupan Lokal**: Sangat akurat untuk pemetaan wilayah RT/RW di Sijenggung yang sering tidak terindeks sempurna di Google Maps.
 
 ---
 *Status Rencana: **Ready for Implementation***

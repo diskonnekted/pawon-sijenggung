@@ -49,7 +49,7 @@ export default function ArticleCard({ article }: { article: Article }) {
         </h3>
         
         <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3 font-medium">
-          {article.excerpt || "Baca informasi selengkapnya mengenai dukungan dan kegiatan terbaru dari Kalurahan Pondokrejo."}
+          {article.excerpt || "Baca informasi selengkapnya mengenai dukungan dan kegiatan terbaru dari Desa Sijenggung."}
         </p>
 
         <div className="mt-auto flex items-center gap-2 text-green-700 font-black text-xs uppercase tracking-widest">

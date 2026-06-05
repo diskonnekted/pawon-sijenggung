@@ -15,7 +15,7 @@ export default async function CategoriesPage() {
           Kategori <span className="text-green-600">Pilihan</span>.
         </h1>
         <p className="text-slate-500 font-medium max-w-2xl mx-auto">
-          Temukan berbagai produk unggulan dari Pondokrejo berdasarkan kategori favorit Anda.
+          Temukan berbagai produk unggulan dari Sijenggung berdasarkan kategori favorit Anda.
         </p>
       </div>
 

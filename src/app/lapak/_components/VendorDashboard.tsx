@@ -41,7 +41,7 @@ export default function VendorDashboard({ initialData, onLogout }: Props) {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-black text-slate-900">{initialData.name}</h1>
-            <p className="text-slate-400 font-bold text-sm">Portal UMKM Pondokrejo</p>
+            <p className="text-slate-400 font-bold text-sm">Portal UMKM Sijenggung</p>
           </div>
           <button 
             onClick={onLogout}

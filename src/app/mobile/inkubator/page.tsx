@@ -64,8 +64,8 @@ export default async function MobileIncubatorPage() {
             <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-green-500/30">
               Program Desa
             </div>
-            <h2 className="text-4xl font-black mb-4 tracking-tighter leading-tight">Membangun Bisnis dari <span className="text-green-500">Kalurahan</span>.</h2>
-            <p className="text-slate-400 text-sm font-medium mb-8 leading-relaxed">Dukungan penuh Kalurahan Pondokrejo untuk memajukan usaha warga.</p>
+            <h2 className="text-4xl font-black mb-4 tracking-tighter leading-tight">Membangun Bisnis dari <span className="text-green-500">Desa</span>.</h2>
+            <p className="text-slate-400 text-sm font-medium mb-8 leading-relaxed">Dukungan penuh Desa Sijenggung untuk memajukan usaha warga.</p>
             <a
               href="https://wa.me/081234567890"
               className="w-full flex items-center justify-center gap-3 bg-green-600 text-white font-black py-4 rounded-2xl shadow-xl shadow-green-600/20 active:scale-95 transition-all"

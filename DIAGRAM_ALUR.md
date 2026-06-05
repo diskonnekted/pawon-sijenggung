@@ -11,7 +11,7 @@ sequenceDiagram
     participant WA as Fonnte API (WhatsApp)
     participant V as Penjual (UMKM)
     participant K as Kurir
-    participant A as Admin Kalurahan
+    participant A as Admin Desa
 
     P->>S: Lakukan Checkout (COD)
     S->>DB: Buat Dokumen Pesanan (Pending)

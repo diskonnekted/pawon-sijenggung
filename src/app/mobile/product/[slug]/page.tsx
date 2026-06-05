@@ -76,7 +76,7 @@ export default async function MobileProductPage({ params }: Props) {
         <div className="mb-8">
           <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-3">Deskripsi Produk</h4>
           <p className="text-slate-600 leading-relaxed font-medium">
-            {product.description || "Produk UMKM berkualitas tinggi dari warga Pondokrejo."}
+            {product.description || "Produk UMKM berkualitas tinggi dari warga Sijenggung."}
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export default async function MobileProductPage({ params }: Props) {
               </div>
             </div>
             <a
-              href={`https://wa.me/${product.vendor.phone}?text=Halo, saya tertarik dengan produk ${product.name} di Pasar Pondokrejo.`}
+              href={`https://wa.me/${product.vendor.phone}?text=Halo, saya tertarik dengan produk ${product.name} di Pasar Sijenggung.`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs font-bold text-green-400 hover:text-green-300"

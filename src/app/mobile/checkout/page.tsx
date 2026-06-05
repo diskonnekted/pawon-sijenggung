@@ -90,7 +90,7 @@ export default function MobileCheckoutPage() {
             NOTIFIKASI TERKIRIM
           </h4>
           <p className="text-xs font-bold text-green-800 leading-relaxed">
-            Kami telah mengirimkan detail pesanan ke WhatsApp Anda. Admin Kalurahan akan segera memproses pesanan ini.
+            Kami telah mengirimkan detail pesanan ke WhatsApp Anda. Admin Desa akan segera memproses pesanan ini.
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export default function MobileCheckoutPage() {
                 <textarea
                   required
                   rows={3}
-                  placeholder="Alamat Lengkap di Pondokrejo"
+                  placeholder="Alamat Lengkap di Sijenggung"
                   className="w-full p-5 bg-slate-50 border-none rounded-3xl focus:ring-2 focus:ring-green-600 outline-none transition-all font-bold text-slate-900"
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}

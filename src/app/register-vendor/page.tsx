@@ -34,7 +34,7 @@ export default function RegisterVendorPage() {
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Pendaftaran Terkirim!</h1>
           <p className="text-gray-600 mb-8">
-            Terima kasih telah mendaftar. Admin Kalurahan akan memverifikasi data UMKM Anda. Kami akan menghubungi Anda melalui WhatsApp jika sudah aktif.
+            Terima kasih telah mendaftar. Admin Desa akan memverifikasi data UMKM Anda. Kami akan menghubungi Anda melalui WhatsApp jika sudah aktif.
           </p>
           <Link href="/" className="bg-green-600 text-white font-bold py-4 px-8 rounded-2xl hover:bg-green-700 transition-colors inline-block w-full">
             Kembali ke Beranda
@@ -53,7 +53,7 @@ export default function RegisterVendorPage() {
           </div>
           <h1 className="text-4xl font-black text-gray-900 mb-6">Buka Toko Online UMKM Anda</h1>
           <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-            Daftarkan UMKM Anda di PAWON untuk menjangkau lebih banyak pembeli di wilayah kalurahan kita. Nikmati fasilitas pengiriman kurir kalurahan dan sistem pembayaran COD yang aman.
+            Daftarkan UMKM Anda di PAWON untuk menjangkau lebih banyak pembeli di wilayah desa kita. Nikmati fasilitas pengiriman kurir desa dan sistem pembayaran COD yang aman.
           </p>
           <div className="space-y-4">
             <div className="flex gap-4 items-start">
@@ -62,7 +62,7 @@ export default function RegisterVendorPage() {
             </div>
             <div className="flex gap-4 items-start">
               <div className="bg-green-600 text-white w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold mt-1">2</div>
-              <p className="text-gray-700 font-medium">Tunggu verifikasi identitas dari Admin Kalurahan.</p>
+              <p className="text-gray-700 font-medium">Tunggu verifikasi identitas dari Admin Desa.</p>
             </div>
             <div className="flex gap-4 items-start">
               <div className="bg-green-600 text-white w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold mt-1">3</div>
@@ -97,7 +97,7 @@ export default function RegisterVendorPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-1">Alamat di Pondokrejo</label>
+              <label className="block text-sm font-bold text-gray-700 mb-1">Alamat di Sijenggung</label>
               <input
                 required
                 type="text"

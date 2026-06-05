@@ -65,7 +65,7 @@ export default async function MobileVendorShopPage({ params }: Props) {
               )}
               <div className="flex items-center gap-1 mt-2 text-slate-400 font-bold text-[10px]">
                 <MapPin className="w-3 h-3 text-green-600" />
-                {vendor.address || 'Pondokrejo'}
+                {vendor.address || 'Sijenggung'}
               </div>
             </div>
           </div>

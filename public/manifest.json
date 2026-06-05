@@ -1,7 +1,7 @@
 {
-  "name": "PAWON - Pasar Warga Pondokrejo",
+  "name": "PAWON - Pasar Warga Sijenggung",
   "short_name": "PAWON",
-  "description": "Pasar Digital Resmi Kalurahan Pondokrejo",
+  "description": "Pasar Digital Resmi Desa Sijenggung",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

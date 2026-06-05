@@ -20,7 +20,7 @@ export default async function MobileVendorsPage() {
 
       <main className="p-6 space-y-6 pb-20">
         <div className="mb-8">
-          <h2 className="text-2xl font-black text-slate-900 leading-tight">Dukung <span className="text-green-600">UMKM</span> Lokal Pondokrejo.</h2>
+          <h2 className="text-2xl font-black text-slate-900 leading-tight">Dukung <span className="text-green-600">UMKM</span> Lokal Sijenggung.</h2>
           <p className="text-slate-500 text-sm font-medium mt-2">Berbelanja langsung dari warga terverifikasi.</p>
         </div>
 
@@ -57,11 +57,11 @@ export default async function MobileVendorsPage() {
               </h2>
               <div className="flex items-center gap-1.5 text-slate-400 text-[10px] font-black uppercase tracking-wider mb-4">
                 <MapPin className="w-3 h-3 text-green-600" />
-                {vendor.address || 'Pondokrejo'}
+                {vendor.address || 'Sijenggung'}
               </div>
               
               <p className="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2 font-medium">
-                {vendor.description || 'UMKM terpercaya di kalurahan Pondokrejo.'}
+                {vendor.description || 'UMKM terpercaya di desa Sijenggung.'}
               </p>
 
               <Link 
