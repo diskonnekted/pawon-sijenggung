@@ -15,7 +15,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3 group min-w-fit">
           <div className="relative w-10 h-10 group-hover:scale-110 transition-transform">
             <Image
-              src="/logo.webp"
+              src="/logo.png"
               alt="Logo Pasar Sijenggung"
               fill
               className="object-contain"
