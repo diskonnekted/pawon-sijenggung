@@ -74,7 +74,7 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
     // --- INTEGRASI FONNTE WHATSAPP ---
     if (result._id) {
       console.log('Starting WhatsApp notifications...')
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon-sijenggung.vercel.app'
       const isQris = formData.paymentMethod === 'qris'
       
       const waMessage = formatOrderMessage(
@@ -121,7 +121,7 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
 }
 
 async function notifySellerAndCourier(orderNumber: string, customerName: string, deliveryAddress: string, items: {name: string, quantity: number}[], totalAmount: number) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon-sijenggung.vercel.app'
   
   // 3. Kirim ke Penjual
   console.log('Sending to Seller...')
@@ -158,7 +158,7 @@ export async function updateOrderStatus(orderNumber: string, newStatus: string, 
         .commit()
 
       // Beri tahu pembeli bahwa pembayaran berhasil
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon-sijenggung.vercel.app'
       const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
       await sendWhatsAppNotification(order.customerPhone, `Halo *${order.customerName}*,\n\nPembayaran QRIS Anda untuk pesanan *${orderNumber}* sudah diterima oleh Admin Desa.\n\nBarang pesanan Anda saat ini sedang disiapkan oleh Penjual dan akan segera dikirim oleh Kurir ke alamat Anda.${buyerLinks}`)
 
