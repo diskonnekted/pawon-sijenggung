@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group min-w-fit">
-          <div className="relative w-10 h-10 group-hover:scale-110 transition-transform">
+          <div className="relative w-14 h-14 group-hover:scale-110 transition-transform">
             <Image
               src="/logo.png"
               alt="Logo Pasar Sijenggung"
