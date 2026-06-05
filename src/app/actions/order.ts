@@ -94,7 +94,8 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
         const adminQrisMsg = `${waMessage}\n\n*⚠️ PEMBAYARAN QRIS*\nPembeli menggunakan QRIS. Mohon cek mutasi rekening Anda sebesar *Rp${totalAmount.toLocaleString('id-ID')}*.\nJika dana sudah masuk, klik link ini untuk memproses pesanan:\n✅ Konfirmasi Pembayaran: ${baseUrl}/order/${orderNumber}/action?role=admin&status=paid&label=Konfirmasi+Pembayaran+QRIS`
         await sendWhatsAppNotification(adminPhone, adminQrisMsg)
       } else {
-        await sendWhatsAppNotification(adminPhone, waMessage)
+        const adminCodMsg = `${waMessage}\n\n*⚠️ PESANAN COD*\nPembeli menggunakan COD (Bayar di Tempat). Jika pesanan ini valid/bukan fiktif, klik link di bawah ini untuk memproses dan meneruskannya ke Penjual & Kurir:\n✅ Konfirmasi Pesanan COD: ${baseUrl}/order/${orderNumber}/action?role=admin&status=processing_cod&label=Konfirmasi+Pesanan+COD`
+        await sendWhatsAppNotification(adminPhone, adminCodMsg)
       }
 
       // 2. Kirim ke Pembeli
@@ -107,10 +108,8 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
         await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON SIJENGGUNG*. Pesanan Anda *${orderNumber}* telah kami terima dan sedang diproses.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *COD*${buyerLinks}\n\nAdmin atau Kurir kami akan segera menghubungi Anda.`)
       }
 
-      // 3 & 4. Kirim ke Penjual & Kurir (Hanya jika COD)
-      if (!isQris) {
-        await notifySellerAndCourier(orderNumber, formData.name, formData.address, items.map(i => ({ name: i.name, quantity: i.quantity })), totalAmount)
-      }
+      // 3 & 4. Seller & Courier will be notified LATER when Admin confirms the order.
+      // Removed immediate notifySellerAndCourier for COD.
     }
 
     return { success: true, orderId: result._id, orderNumber }
@@ -161,6 +160,32 @@ export async function updateOrderStatus(orderNumber: string, newStatus: string, 
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon-sijenggung.vercel.app'
       const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
       await sendWhatsAppNotification(order.customerPhone, `Halo *${order.customerName}*,\n\nPembayaran QRIS Anda untuk pesanan *${orderNumber}* sudah diterima oleh Admin Desa.\n\nBarang pesanan Anda saat ini sedang disiapkan oleh Penjual dan akan segera dikirim oleh Kurir ke alamat Anda.${buyerLinks}`)
+
+      // Lanjutkan notifikasi ke Seller & Courier
+      await notifySellerAndCourier(
+        orderNumber, 
+        order.customerName, 
+        order.deliveryAddress, 
+        order.items.map((i: any) => ({ name: i.product?.name || 'Produk', quantity: i.quantity })), 
+        order.totalAmount
+      )
+
+      return { success: true }
+    }
+
+    // Jika Admin menekan tombol Confirm COD
+    if (newStatus === 'processing_cod') {
+      if (order.status !== 'pending') return { success: false, error: 'Pesanan ini sudah diproses sebelumnya.' }
+      
+      await writeClient
+        .patch(order._id)
+        .set({ status: 'processing' })
+        .commit()
+
+      // Beri tahu pembeli bahwa pesanan diproses
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon-sijenggung.vercel.app'
+      const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
+      await sendWhatsAppNotification(order.customerPhone, `Halo *${order.customerName}*,\n\nPesanan COD Anda (*${orderNumber}*) sudah dikonfirmasi oleh Admin Desa.\n\nBarang pesanan Anda saat ini sedang disiapkan oleh Penjual dan akan segera dikirim oleh Kurir ke alamat Anda.${buyerLinks}`)
 
       // Lanjutkan notifikasi ke Seller & Courier
       await notifySellerAndCourier(
