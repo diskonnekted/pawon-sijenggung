@@ -65,6 +65,7 @@ export interface OrderFormData {
   name: string;
   phone: string;
   address: string;
+  paymentMethod?: 'cod' | 'qris';
 }
 
 export interface Article {

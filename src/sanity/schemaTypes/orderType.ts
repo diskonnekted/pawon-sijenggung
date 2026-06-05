@@ -73,6 +73,31 @@ export const orderType = defineType({
       type: 'number',
     }),
     defineField({
+      name: 'paymentMethod',
+      title: 'Metode Pembayaran',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Bayar di Tempat (COD)', value: 'cod' },
+          { title: 'QRIS', value: 'qris' },
+        ],
+      },
+      initialValue: 'cod',
+    }),
+    defineField({
+      name: 'paymentStatus',
+      title: 'Status Pembayaran',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Belum Dibayar', value: 'unpaid' },
+          { title: 'Sudah Dibayar', value: 'paid' },
+        ],
+      },
+      initialValue: 'unpaid',
+      hidden: ({ document }) => document?.paymentMethod === 'cod',
+    }),
+    defineField({
       name: 'status',
       type: 'string',
       options: {

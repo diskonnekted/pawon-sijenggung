@@ -47,6 +47,8 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
       deliveryAddress: formData.address,
       totalAmount,
       shippingFee,
+      paymentMethod: formData.paymentMethod || 'cod',
+      paymentStatus: 'unpaid',
       status: 'pending',
       items: items.map((item) => ({
         _key: Math.random().toString(36).substr(2, 9),
@@ -73,6 +75,7 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
     if (result._id) {
       console.log('Starting WhatsApp notifications...')
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
+      const isQris = formData.paymentMethod === 'qris'
       
       const waMessage = formatOrderMessage(
         orderNumber,
@@ -87,24 +90,27 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
 
       // 1. Kirim ke Admin
       console.log('Sending to Admin:', adminPhone)
-      await sendWhatsAppNotification(adminPhone, waMessage)
+      if (isQris) {
+        const adminQrisMsg = `${waMessage}\n\n*⚠️ PEMBAYARAN QRIS*\nPembeli menggunakan QRIS. Mohon cek mutasi rekening Anda sebesar *Rp${totalAmount.toLocaleString('id-ID')}*.\nJika dana sudah masuk, klik link ini untuk memproses pesanan:\n✅ Konfirmasi Pembayaran: ${baseUrl}/order/${orderNumber}/action?role=admin&status=paid&label=Konfirmasi+Pembayaran+QRIS`
+        await sendWhatsAppNotification(adminPhone, adminQrisMsg)
+      } else {
+        await sendWhatsAppNotification(adminPhone, waMessage)
+      }
 
       // 2. Kirim ke Pembeli
       console.log('Sending to Buyer:', formData.phone)
       const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
-      await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON SIJENGGUNG*. Pesanan Anda *${orderNumber}* telah kami terima dan sedang diproses.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *COD*${buyerLinks}\n\nAdmin atau Kurir kami akan segera menghubungi Anda.`)
+      
+      if (isQris) {
+        await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON SIJENGGUNG*. Pesanan Anda *${orderNumber}* telah kami terima.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *QRIS*\n\nAdmin Desa sedang memverifikasi pembayaran Anda. Kami akan segera memproses pesanan setelah pembayaran terkonfirmasi.`)
+      } else {
+        await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON SIJENGGUNG*. Pesanan Anda *${orderNumber}* telah kami terima dan sedang diproses.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *COD*${buyerLinks}\n\nAdmin atau Kurir kami akan segera menghubungi Anda.`)
+      }
 
-      // 3. Kirim ke Penjual
-      console.log('Sending to Seller...')
-      const sellerLinks = `\n\n*UPDATE STATUS PENJUAL:*\n📦 Serahkan ke Kurir: ${baseUrl}/order/${orderNumber}/action?role=seller&status=shipped&label=Serahkan+Barang+ke+Kurir\n✅ Selesai: ${baseUrl}/order/${orderNumber}/action?role=seller&status=completed&label=Transaksi+Selesai\n⚠️ Masalah: ${baseUrl}/order/${orderNumber}/action?role=seller&status=problem&label=Transaksi+Bermasalah`
-      const sellerMessage = `🔔 *PESANAN BARU UNTUK SELLER* 🔔\n\nHalo Seller,\nAda pesanan masuk yang perlu disiapkan segera.\n\n👤 *Pemesan:* ${formData.name}\n🆔 *No. Pesanan:* ${orderNumber}\n\n🛍️ *Item yang dipesan:* \n${items.map(i => `- ${i.name} (x${i.quantity})`).join('\n')}${sellerLinks}`
-      await sendWhatsAppNotification('0895360396984', sellerMessage)
-
-      // 4. Kirim ke Kurir
-      console.log('Sending to Courier...')
-      const courierLinks = `\n\n*UPDATE STATUS KURIR:*\n👍 Terima Order: ${baseUrl}/order/${orderNumber}/action?role=courier&status=accepted&label=Terima+Tugas+Pengantaran\n📦 Ambil dari Seller: ${baseUrl}/order/${orderNumber}/action?role=courier&status=shipped&label=Ambil+Barang+dari+Seller\n🚚 Mulai Kirim: ${baseUrl}/order/${orderNumber}/action?role=courier&status=delivering&label=Mulai+Pengiriman\n🏁 Selesai (Diterima): ${baseUrl}/order/${orderNumber}/action?role=courier&status=completed&label=Pesanan+Diterima+Warga\n⚠️ Ada Masalah: ${baseUrl}/order/${orderNumber}/action?role=courier&status=problem&label=Lapor+Masalah+Pengiriman`
-      const courierMessage = `🚚 *TUGAS PENGANTARAN BARU* 🚚\n\nHalo Kurir PAWON,\nAda tugas pengantaran baru.\n\n📍 *Alamat Tujuan:* ${formData.address}\n👤 *Penerima:* ${formData.name}\n🆔 *No. Pesanan:* ${orderNumber}\n💰 *Tagihan COD:* Rp${totalAmount.toLocaleString('id-ID')}${courierLinks}`
-      await sendWhatsAppNotification('082223863537', courierMessage)
+      // 3 & 4. Kirim ke Penjual & Kurir (Hanya jika COD)
+      if (!isQris) {
+        await notifySellerAndCourier(orderNumber, formData.name, formData.address, items.map(i => ({ name: i.name, quantity: i.quantity })), totalAmount)
+      }
     }
 
     return { success: true, orderId: result._id, orderNumber }
@@ -114,15 +120,61 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
   }
 }
 
+async function notifySellerAndCourier(orderNumber: string, customerName: string, deliveryAddress: string, items: {name: string, quantity: number}[], totalAmount: number) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
+  
+  // 3. Kirim ke Penjual
+  console.log('Sending to Seller...')
+  const sellerLinks = `\n\n*UPDATE STATUS PENJUAL:*\n📦 Serahkan ke Kurir: ${baseUrl}/order/${orderNumber}/action?role=seller&status=shipped&label=Serahkan+Barang+ke+Kurir\n✅ Selesai: ${baseUrl}/order/${orderNumber}/action?role=seller&status=completed&label=Transaksi+Selesai\n⚠️ Masalah: ${baseUrl}/order/${orderNumber}/action?role=seller&status=problem&label=Transaksi+Bermasalah`
+  const sellerMessage = `🔔 *PESANAN BARU UNTUK SELLER* 🔔\n\nHalo Seller,\nAda pesanan masuk yang perlu disiapkan segera.\n\n👤 *Pemesan:* ${customerName}\n🆔 *No. Pesanan:* ${orderNumber}\n\n🛍️ *Item yang dipesan:* \n${items.map(i => `- ${i.name} (x${i.quantity})`).join('\n')}${sellerLinks}`
+  await sendWhatsAppNotification('0895360396984', sellerMessage) // Todo: Fetch seller phones if applicable
+
+  // 4. Kirim ke Kurir
+  console.log('Sending to Courier...')
+  const courierLinks = `\n\n*UPDATE STATUS KURIR:*\n👍 Terima Order: ${baseUrl}/order/${orderNumber}/action?role=courier&status=accepted&label=Terima+Tugas+Pengantaran\n📦 Ambil dari Seller: ${baseUrl}/order/${orderNumber}/action?role=courier&status=shipped&label=Ambil+Barang+dari+Seller\n🚚 Mulai Kirim: ${baseUrl}/order/${orderNumber}/action?role=courier&status=delivering&label=Mulai+Pengiriman\n🏁 Selesai (Diterima): ${baseUrl}/order/${orderNumber}/action?role=courier&status=completed&label=Pesanan+Diterima+Warga\n⚠️ Ada Masalah: ${baseUrl}/order/${orderNumber}/action?role=courier&status=problem&label=Lapor+Masalah+Pengiriman`
+  const courierMessage = `🚚 *TUGAS PENGANTARAN BARU* 🚚\n\nHalo Kurir PAWON,\nAda tugas pengantaran baru.\n\n📍 *Alamat Tujuan:* ${deliveryAddress}\n👤 *Penerima:* ${customerName}\n🆔 *No. Pesanan:* ${orderNumber}\n💰 *Tagihan:* Rp${totalAmount.toLocaleString('id-ID')} (Cek apakah COD atau QRIS)${courierLinks}`
+  await sendWhatsAppNotification('082223863537', courierMessage)
+}
+
 export async function updateOrderStatus(orderNumber: string, newStatus: string, note?: string) {
   try {
-    const query = `*[_type == "order" && orderNumber == $orderNumber][0]{_id, customerName, customerPhone}`
+    const query = `*[_type == "order" && orderNumber == $orderNumber][0]{
+      _id, customerName, customerPhone, deliveryAddress, totalAmount, paymentMethod, paymentStatus, status,
+      items[]{ quantity, product->{name} }
+    }`
     const order = await writeClient.fetch(query, { orderNumber })
 
     if (!order) {
       return { success: false, error: 'Pesanan tidak ditemukan.' }
     }
 
+    // Jika Admin menekan tombol Confirm Paid QRIS
+    if (newStatus === 'paid') {
+      if (order.paymentStatus === 'paid') return { success: false, error: 'Pesanan ini sudah dibayar sebelumnya.' }
+      
+      await writeClient
+        .patch(order._id)
+        .set({ paymentStatus: 'paid', status: 'processing' })
+        .commit()
+
+      // Beri tahu pembeli bahwa pembayaran berhasil
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
+      const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
+      await sendWhatsAppNotification(order.customerPhone, `Halo *${order.customerName}*,\n\nPembayaran QRIS Anda untuk pesanan *${orderNumber}* telah berhasil dikonfirmasi oleh Admin. Kami sedang memproses pesanan Anda dan kurir akan segera menghubungi Anda.${buyerLinks}`)
+
+      // Lanjutkan notifikasi ke Seller & Courier
+      await notifySellerAndCourier(
+        orderNumber, 
+        order.customerName, 
+        order.deliveryAddress, 
+        order.items.map((i: any) => ({ name: i.product?.name || 'Produk', quantity: i.quantity })), 
+        order.totalAmount
+      )
+
+      return { success: true }
+    }
+
+    // Default status update
     await writeClient
       .patch(order._id)
       .set({ status: newStatus })

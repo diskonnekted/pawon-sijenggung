@@ -34,6 +34,19 @@ export const appSettingsType = defineType({
       initialValue: false,
       description: 'Aktifkan ini jika ingin menutup akses belanja sementara untuk pemeliharaan sistem.',
     }),
+    defineField({
+      name: 'qrisImage',
+      title: 'Gambar QRIS Desa',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Barcode QRIS yang akan ditampilkan kepada pembeli saat checkout.',
+    }),
+    defineField({
+      name: 'qrisName',
+      title: 'Nama Akun QRIS',
+      type: 'string',
+      description: 'Contoh: BUMDes Sijenggung',
+    }),
   ],
   preview: {
     prepare() {
