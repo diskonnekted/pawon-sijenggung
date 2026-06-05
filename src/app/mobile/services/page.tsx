@@ -50,7 +50,11 @@ export default async function MobileServicesPage({ searchParams }: Props) {
         category: category || null
       } 
     }) as Promise<{ data: Service[] }>,
-    sanityFetch({ query: CATEGORIES_QUERY }) as Promise<{ data: Category[] }>
+    sanityFetch({ 
+      query: `*[_type == "category" && count(*[_type == "service" && references(^._id)]) > 0] | order(name asc) {
+        _id, name, "slug": slug.current
+      }`
+    }) as Promise<{ data: Category[] }>
   ]);
 
   return (
