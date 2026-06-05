@@ -160,7 +160,7 @@ export async function updateOrderStatus(orderNumber: string, newStatus: string, 
       // Beri tahu pembeli bahwa pembayaran berhasil
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://pawon.sijenggung.id'
       const buyerLinks = `\n\n*KONFIRMASI PENERIMAAN:*\n✅ Barang Diterima: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=completed&label=Barang+Sudah+Diterima\n❌ Barang Bermasalah: ${baseUrl}/order/${orderNumber}/action?role=buyer&status=problem&label=Lapor+Barang+Bermasalah`
-      await sendWhatsAppNotification(order.customerPhone, `Halo *${order.customerName}*,\n\nPembayaran QRIS Anda untuk pesanan *${orderNumber}* telah berhasil dikonfirmasi oleh Admin. Kami sedang memproses pesanan Anda dan kurir akan segera menghubungi Anda.${buyerLinks}`)
+      await sendWhatsAppNotification(order.customerPhone, `Halo *${order.customerName}*,\n\nPembayaran QRIS Anda untuk pesanan *${orderNumber}* sudah diterima oleh Admin Desa.\n\nBarang pesanan Anda saat ini sedang disiapkan oleh Penjual dan akan segera dikirim oleh Kurir ke alamat Anda.${buyerLinks}`)
 
       // Lanjutkan notifikasi ke Seller & Courier
       await notifySellerAndCourier(
