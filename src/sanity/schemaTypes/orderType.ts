@@ -5,6 +5,7 @@ export const orderType = defineType({
   name: 'order',
   title: 'Pesanan',
   type: 'document',
+  liveEdit: true,
   icon: BasketIcon,
   fields: [
     defineField({
