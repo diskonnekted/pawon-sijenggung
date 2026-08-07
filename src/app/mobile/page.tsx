@@ -266,9 +266,9 @@ export default async function MobileHome({ searchParams }: Props) {
                    </div>
                    <h3 className="text-xl font-black text-slate-900 mb-2">Punya UMKM di Sijenggung? 🏪</h3>
                    <p className="text-slate-400 text-xs mb-6 leading-relaxed">Kelola produk, edit profil toko, dan atur status operasional lapak Anda di portal penjual PAWON.</p>
-                   <Link href="/lapak" className="block w-full bg-slate-900 text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all">
+                   <a href="/lapak" className="block w-full bg-slate-900 text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all text-center">
                       Masuk ke Lapak Anda
-                   </Link>
+                   </a>
                 </div>
               </div>
             </section>
