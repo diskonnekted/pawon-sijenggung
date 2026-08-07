@@ -23,8 +23,9 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
     // 1. Cek apakah ada vendor yang sedang tutup
     const productIds = items.map(i => i._id)
     const vendorsStatusQuery = `*[_type == "product" && _id in $productIds]{
+      _id,
       name,
-      "vendor": vendor->{name, isOpen, closingMessage}
+      "vendor": vendor->{_id, name, phone, isOpen, closingMessage}
     }`
     const productsWithVendorStatus = await writeClient.fetch(vendorsStatusQuery, { productIds })
 
@@ -108,8 +109,31 @@ export async function createOrder(formData: OrderFormData, items: CartItem[], to
         await sendWhatsAppNotification(formData.phone, `Halo *${formData.name}*,\n\nTerima kasih telah berbelanja di *PAWON SIJENGGUNG*. Pesanan Anda *${orderNumber}* telah kami terima dan sedang diproses.\n\nTotal: *Rp${totalAmount.toLocaleString('id-ID')}*\nMetode: *COD*${buyerLinks}\n\nAdmin atau Kurir kami akan segera menghubungi Anda.`)
       }
 
-      // 3 & 4. Seller & Courier will be notified LATER when Admin confirms the order.
-      // Removed immediate notifySellerAndCourier for COD.
+      // 3. Kirim ke Penjual (Seller) masing-masing item
+      const vendorMap = new Map<string, any>()
+      productsWithVendorStatus.forEach((p: any) => {
+        if (p.vendor) {
+          vendorMap.set(p.vendor._id || p.vendor.name, p.vendor)
+        }
+      })
+
+      for (const [vendorId, vendor] of vendorMap.entries()) {
+        const sellerPhone = vendor.phone
+        if (!sellerPhone) continue
+
+        const vendorItems = items.filter(item => {
+          const productInfo = productsWithVendorStatus.find((p: any) => p._id === item._id)
+          return productInfo?.vendor?._id === vendorId || productInfo?.vendor?.name === vendor.name
+        })
+
+        if (vendorItems.length === 0) continue
+
+        const sellerLinks = `\n\n*UPDATE STATUS PENJUAL:*\n📦 Serahkan ke Kurir: ${baseUrl}/order/${orderNumber}/action?role=seller&status=shipped&label=Serahkan+Barang+ke+Kurir\n✅ Selesai: ${baseUrl}/order/${orderNumber}/action?role=seller&status=completed&label=Transaksi+Selesai\n⚠️ Masalah: ${baseUrl}/order/${orderNumber}/action?role=seller&status=problem&label=Transaksi+Bermasalah`
+        const sellerMessage = `🔔 *PESANAN BARU UNTUK SELLER* 🔔\n\nHalo *${vendor.name}*,\nAda pesanan masuk dari warga Sijenggung yang perlu disiapkan segera.\n\n👤 *Pemesan:* ${formData.name}\n🆔 *No. Pesanan:* ${orderNumber}\n\n🛍️ *Item yang dipesan:* \n${vendorItems.map(i => `- ${i.name} (x${i.quantity})`).join('\n')}${sellerLinks}`
+
+        console.log(`Sending to Seller ${vendor.name}:`, sellerPhone)
+        await sendWhatsAppNotification(sellerPhone, sellerMessage)
+      }
     }
 
     return { success: true, orderId: result._id, orderNumber }

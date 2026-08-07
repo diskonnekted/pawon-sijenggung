@@ -78,7 +78,7 @@ export default async function MobileIncubatorDetailPage({ params }: Props) {
             <div className="space-y-4">
               {[
                 "Pendampingan dari ahli profesional",
-                "Akses langsung ke jaringan BUMKal",
+                "Akses langsung ke jaringan kemitraan desa",
                 "Meningkatkan omzet & daya saing"
               ].map((benefit, idx) => (
                 <div key={idx} className="flex gap-4 items-start bg-slate-50 p-5 rounded-3xl">

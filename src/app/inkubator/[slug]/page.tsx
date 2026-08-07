@@ -126,8 +126,6 @@ export default async function IncubatorDetailPage({ params }: Props) {
             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8">Program Resmi Desa Sijenggung</h4>
             <div className="inline-flex gap-8 items-center opacity-30 grayscale">
                <span className="font-black text-2xl tracking-tighter">PAWON</span>
-               <div className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
-               <span className="font-black text-2xl tracking-tighter">BUMKAL</span>
             </div>
           </div>
         </div>
