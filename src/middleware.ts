@@ -14,6 +14,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/static') ||
     pathname.startsWith('/order/') ||
     pathname.startsWith('/lapak') ||
+    pathname.startsWith('/info') ||
     pathname.includes('.') // Catch files with extensions
   ) {
     return NextResponse.next();
