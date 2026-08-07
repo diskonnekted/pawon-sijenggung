@@ -31,7 +31,7 @@ export default async function MobileVendorsPage() {
               className="bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-lg shadow-slate-200/50 active:scale-[0.98] transition-all flex flex-col"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-slate-50 bg-slate-50">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-slate-50 bg-slate-50 flex-shrink-0">
                   {vendor.logo ? (
                     <Image
                       src={urlFor(vendor.logo).width(200).height(200).url()}
@@ -46,7 +46,7 @@ export default async function MobileVendorsPage() {
                   )}
                 </div>
                 {vendor.isVerified && (
-                  <div className="bg-blue-50 text-blue-600 p-1.5 rounded-lg">
+                  <div className="bg-blue-50 text-blue-600 p-1.5 rounded-lg flex-shrink-0">
                     <BadgeCheck className="w-5 h-5" />
                   </div>
                 )}
