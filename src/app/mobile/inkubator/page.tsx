@@ -105,6 +105,30 @@ export default async function MobileIncubatorPage() {
           </div>
         </div>
 
+        {/* Partnership Section - Horizontal Scroll */}
+        <div className="p-6 pb-2">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-black uppercase tracking-wider text-slate-400">Kemitraan Strategis</h3>
+          </div>
+          <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory">
+            {[
+              { name: "SMK Darunnajah", role: "Pelatihan Branding", desc: "Kolaborasi program magang kreatif dan workshop desain kemasan produk." },
+              { name: "Clasnet", role: "Digitalisasi", desc: "Penyediaan infrastruktur internet cepat dan toko online warga." },
+              { name: "Dinas Indagkop", role: "Bantuan Legalitas", desc: "Izin usaha (NIB), sertifikasi Halal, dan P-IRT gratis." },
+              { name: "BBS", role: "Pengembangan Produk", desc: "Pendampingan mutu rasa dan uji ketahanan pangan produk." },
+              { name: "Exadata", role: "Konsultasi & Mentoring", desc: "Penyediaan mentor profesional untuk mentoring bisnis." }
+            ].map((partner, idx) => (
+              <div key={idx} className="min-w-[200px] w-[200px] bg-white p-5 rounded-[2rem] border border-slate-100/50 shadow-md shadow-slate-200/20 snap-start flex flex-col justify-between">
+                <div>
+                  <span className="text-[8px] font-black uppercase tracking-wider text-green-700 bg-green-50 px-2 py-0.5 rounded-md border border-green-100/80 inline-block mb-3">{partner.role}</span>
+                  <h4 className="font-black text-slate-900 text-xs mb-1">{partner.name}</h4>
+                  <p className="text-slate-500 text-[10px] leading-relaxed font-medium">{partner.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Support Section */}
         <div className="p-8 pb-32">
            <div className="bg-slate-900 rounded-[3rem] p-8 text-white relative overflow-hidden">

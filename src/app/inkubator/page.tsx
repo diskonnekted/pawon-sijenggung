@@ -108,6 +108,35 @@ export default async function IncubatorPage() {
         </div>
       </section>
 
+      {/* Partnership Section */}
+      <section className="py-20 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-green-100 mb-4">Kemitraan Strategis</span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">Didukung oleh Institusi Terpercaya</h2>
+            <p className="text-slate-500 font-medium text-sm mt-3 max-w-2xl mx-auto">Kolaborasi bersama berbagai instansi untuk mengakselerasi pertumbuhan UMKM Sijenggung.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            {[
+              { name: "SMK Darunnajah", role: "Pelatihan Branding", desc: "Kolaborasi program magang kreatif dan workshop desain kemasan produk." },
+              { name: "Clasnet", role: "Digitalisasi", desc: "Penyediaan infrastruktur internet cepat dan digitalisasi toko online warga." },
+              { name: "Dinas Indagkop", role: "Bantuan Legalitas", desc: "Fasilitasi kemudahan izin usaha (NIB), sertifikasi Halal, dan P-IRT gratis." },
+              { name: "BBS", role: "Pengembangan Produk", desc: "Pendampingan peningkatan standar mutu, inovasi rasa, dan ketahanan pangan." },
+              { name: "Exadata", role: "Konsultasi & Mentoring", desc: "Penyediaan mentor profesional untuk konsultasi bisnis & analisis finansial." }
+            ].map((partner, idx) => (
+              <div key={idx} className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100/50 hover:shadow-lg hover:bg-white transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <span className="text-[9px] font-black uppercase tracking-wider text-green-700 bg-green-50 px-2 py-0.5 rounded-md border border-green-100/80 inline-block mb-3">{partner.role}</span>
+                  <h4 className="font-black text-slate-900 text-sm mb-2">{partner.name}</h4>
+                  <p className="text-slate-500 text-[11px] leading-relaxed font-medium">{partner.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Trust Section */}
       <section className="py-24 bg-white border-t border-slate-100">
         <div className="container mx-auto px-4 max-w-5xl">
