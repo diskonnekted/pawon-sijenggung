@@ -157,34 +157,13 @@ export default async function Home({ searchParams }: Props) {
                 <p className="text-slate-500 font-medium">Produk favorit warga Sijenggung</p>
               </div>
               <Link href="/products" className="text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
-                Lihat Semua &rarr;
-              </Link>
+                Lihat Semua →</Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {bestSellers.map((product: Product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* Services Section */}
-      {services.length > 0 && (
-        <section className="mb-20">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">Jasa Profesional Desa 🛠️</h2>
-              <p className="text-slate-500 font-medium">Layanan terpercaya langsung dari tenaga ahli Sijenggung</p>
-            </div>
-            <Link href="/services" className="text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
-              Lihat Semua Jasa &rarr;
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 3).map((service: Service) => (
-              <ServiceCard key={service._id} service={service} />
-            ))}
           </div>
         </section>
       )}
@@ -216,6 +195,26 @@ export default async function Home({ searchParams }: Props) {
             )}
           </div>
         </section>
+
+        {/* Services Section */}
+        {services.length > 0 && (
+          <section className="mb-20">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <h2 className="text-3xl font-black text-slate-900 tracking-tight">Jasa Profesional Desa 🛠️</h2>
+                <p className="text-slate-500 font-medium">Layanan terpercaya langsung dari tenaga ahli Sijenggung</p>
+              </div>
+              <Link href="/services" className="text-green-700 font-bold hover:underline underline-offset-8 decoration-2">
+                Lihat Semua Jasa &rarr;
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.slice(0, 3).map((service: Service) => (
+                <ServiceCard key={service._id} service={service} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Village Info Section */}
         {articles.length > 0 && (

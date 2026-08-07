@@ -44,9 +44,17 @@ export default function OrderActionPage({ params }: Props) {
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
           <h1 className="text-2xl font-black mb-2">Berhasil!</h1>
           <p className="text-slate-500 font-bold mb-8">Status pesanan {orderNumber} telah diperbarui.</p>
-          <button onClick={() => window.close()} className="w-full bg-slate-900 text-white font-black py-4 rounded-2xl">
-            Tutup Halaman
-          </button>
+          <div className="flex flex-col gap-3">
+            <button 
+              onClick={() => window.open(`/track/${orderNumber}`, '_self')} 
+              className="w-full bg-green-600 text-white font-black py-4 rounded-2xl active:scale-95 transition-all"
+            >
+              Lacak Pesanan
+            </button>
+            <button onClick={() => window.close()} className="w-full bg-slate-100 text-slate-600 font-bold py-4 rounded-2xl hover:bg-slate-200 transition-all">
+              Tutup Halaman
+            </button>
+          </div>
         </div>
       </div>
     )

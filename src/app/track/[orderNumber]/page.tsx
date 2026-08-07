@@ -3,6 +3,7 @@ import { ORDER_BY_NUMBER_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import { MapPin, Phone, User, Clock, PackageCheck } from "lucide-react";
 import Link from "next/link";
+import { capitalizeFirst } from "@/utils/format";
 
 interface Props {
   params: Promise<{ orderNumber: string }>;
@@ -135,7 +136,7 @@ export default async function OrderResultPage({ params }: Props) {
                         {item.quantity}x
                       </div>
                       <div>
-                        <p className="font-bold text-gray-800">{item.product.name}</p>
+                        <p className="font-bold text-gray-800">{capitalizeFirst(item.product.name)}</p>
                         <p className="text-xs text-gray-500">@ Rp {item.price.toLocaleString('id-ID')}</p>
                       </div>
                     </div>

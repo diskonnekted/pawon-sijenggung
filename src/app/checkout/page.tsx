@@ -57,7 +57,8 @@ export default function CheckoutPage() {
     const result = await createOrder(formData, items, grandTotal, shippingFee, customerRes.customerId)
 
     if (result.success && result.orderNumber) {
-      setOrderInfo({ 
+      localStorage.setItem('pawon-lastOrder', result.orderNumber)
+      setOrderInfo({
         orderNumber: result.orderNumber
       })
       setSuccess(true)
@@ -95,12 +96,20 @@ export default function CheckoutPage() {
             </p>
           </div>
 
-          <button 
-            onClick={() => router.push('/')}
-            className="w-full bg-green-600 text-white font-bold py-4 rounded-2xl hover:bg-green-700 transition-colors"
-          >
-            Kembali ke Beranda
-          </button>
+          <div className="flex flex-col gap-3">
+            <button 
+              onClick={() => router.push(`/track/${orderInfo.orderNumber}`)}
+              className="w-full bg-green-600 text-white font-bold py-4 rounded-2xl hover:bg-green-700 transition-colors"
+            >
+              Lacak Pesanan
+            </button>
+            <button 
+              onClick={() => router.push('/')}
+              className="w-full bg-slate-100 text-slate-700 font-bold py-4 rounded-2xl hover:bg-slate-200 transition-colors"
+            >
+              Kembali ke Beranda
+            </button>
+          </div>
         </div>
       </div>
     )

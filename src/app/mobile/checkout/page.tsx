@@ -58,7 +58,8 @@ export default function MobileCheckoutPage() {
     const result = await createOrder(formData, items, grandTotal, shippingFee, customerRes.customerId)
 
     if (result.success && result.orderNumber) {
-      setOrderInfo({ 
+      localStorage.setItem('pawon-lastOrder', result.orderNumber)
+      setOrderInfo({
         orderNumber: result.orderNumber
       })
       setSuccess(true)
@@ -97,12 +98,20 @@ export default function MobileCheckoutPage() {
           </p>
         </div>
 
-        <button 
-          onClick={() => router.push('/')}
-          className="w-full max-w-sm bg-slate-900 text-white font-black py-5 rounded-3xl shadow-xl active:scale-95 transition-all"
-        >
-          Kembali ke Beranda
-        </button>
+        <div className="flex flex-col gap-3 w-full max-w-sm">
+          <button 
+            onClick={() => router.push(`/mobile/track/${orderInfo.orderNumber}`)}
+            className="w-full bg-green-600 text-white font-black py-5 rounded-3xl shadow-xl active:scale-95 transition-all"
+          >
+            Lacak Pesanan
+          </button>
+          <button 
+            onClick={() => router.push('/')}
+            className="w-full bg-slate-900 text-white font-black py-5 rounded-3xl shadow-xl active:scale-95 transition-all"
+          >
+            Kembali ke Beranda
+          </button>
+        </div>
       </div>
     )
   }

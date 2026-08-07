@@ -6,12 +6,13 @@ export function middleware(request: NextRequest) {
   const userAgent = request.headers.get('user-agent') || '';
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 
-  // 1. Skip middleware for static assets, internal Next.js paths, and API
+  // 1. Skip middleware for static assets, internal Next.js paths, API, and WhatsApp action links
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/studio') ||
     pathname.startsWith('/static') ||
+    pathname.startsWith('/order/') ||
     pathname.includes('.') // Catch files with extensions
   ) {
     return NextResponse.next();

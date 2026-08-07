@@ -23,7 +23,7 @@ export default async function VendorsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {vendors.map((vendor) => (
           <div 
-            key={vendor._id}
+            key={`${vendor._refType}-${vendor.slug}`}
             className="bg-white rounded-[3rem] p-8 border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all duration-500 group flex flex-col"
           >
             <div className="flex items-start justify-between mb-6">
@@ -62,7 +62,7 @@ export default async function VendorsPage() {
             </div>
 
             <Link 
-              href={`/vendor/${vendor.slug}`}
+              href={vendor._refType === 'seller' ? `/seller/${vendor.slug}` : `/vendor/${vendor.slug}`}
               className="w-full bg-slate-900 text-white text-center font-black py-4 rounded-2xl group-hover:bg-green-600 transition-all shadow-xl shadow-slate-900/10 active:scale-95"
             >
               Lihat Lapak &rarr;

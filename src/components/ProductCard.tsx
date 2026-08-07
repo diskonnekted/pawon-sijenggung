@@ -7,6 +7,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { ShoppingCart, BadgeCheck, CheckCircle2 } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 import { Product } from '@/types'
+import { capitalizeFirst } from '@/utils/format'
 
 interface ProductCardProps {
   product: Product
@@ -71,7 +72,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         
         <Link href={`/product/${product.slug}`} className="flex-grow block mt-0.5">
           <h3 className="text-[11px] sm:text-lg font-bold text-slate-800 mb-1 group-hover:text-green-700 transition-colors line-clamp-2 leading-snug">
-            {product.name}
+            {capitalizeFirst(product.name)}
           </h3>
         </Link>
         

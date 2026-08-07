@@ -24,7 +24,7 @@ export default async function ProductsPage({ searchParams }: Props) {
       && (!defined($category) || categories[]->slug.current match $category)
       && (!defined($minPrice) || price >= $minPrice)
       && (!defined($maxPrice) || price <= $maxPrice)
-    ] | order(_createdAt desc) [0...16] {
+    ] | order(_createdAt desc) [0...100] {
       _id,
       name,
       "slug": slug.current,

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { MapPin, Phone, User, Clock, PackageCheck, ChevronLeft, Truck } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { capitalizeFirst } from "@/utils/format";
 
 interface Props {
   params: Promise<{ orderNumber: string }>;
@@ -88,7 +89,7 @@ export default async function MobileOrderDetailPage({ params }: Props) {
                 <div key={item._key} className="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                   <div className="flex items-center gap-3">
                     <span className="bg-slate-100 text-slate-900 w-8 h-8 rounded-lg flex items-center justify-center font-black text-xs">{item.quantity}x</span>
-                    <span className="font-bold text-slate-700 text-sm">{item.product.name}</span>
+                    <span className="font-bold text-slate-700 text-sm">{capitalizeFirst(item.product.name)}</span>
                   </div>
                   <span className="font-black text-slate-900 text-sm">Rp{(item.price * item.quantity).toLocaleString('id-ID')}</span>
                 </div>

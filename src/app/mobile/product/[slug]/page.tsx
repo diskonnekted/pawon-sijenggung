@@ -65,7 +65,7 @@ export default async function MobileProductPage({ params }: Props) {
         </div>
 
         <h1 className="text-3xl font-black text-slate-900 mb-2 leading-tight">
-          {product.name}
+          {capitalizeFirst(product.name)}
         </h1>
         <p className="text-2xl font-black text-green-700 mb-6">
           Rp{product.price.toLocaleString("id-ID")}
@@ -93,7 +93,7 @@ export default async function MobileProductPage({ params }: Props) {
               </div>
             </div>
             <a
-              href={`https://wa.me/${product.vendor.phone}?text=Halo, saya tertarik dengan produk ${product.name} di Pasar Sijenggung.`}
+              href={`https://wa.me/${product.vendor.phone}?text=Halo, saya tertarik dengan produk ${capitalizeFirst(product.name)} di Pasar Sijenggung.`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs font-bold text-green-400 hover:text-green-300"
@@ -109,7 +109,7 @@ export default async function MobileProductPage({ params }: Props) {
       {/* Fixed Bottom Actions */}
       <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-slate-100 p-4 pb-8 flex gap-3 z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
         <a
-          href={`https://wa.me/${product.vendor.phone}?text=Halo, saya ingin bertanya tentang ${product.name}`}
+          href={`https://wa.me/${product.vendor.phone}?text=Halo, saya ingin bertanya tentang ${capitalizeFirst(product.name)}`}
           className="p-4 bg-slate-100 rounded-2xl active:scale-90 transition-all flex items-center justify-center"
         >
           <MessageCircle className="w-6 h-6 text-slate-700" />

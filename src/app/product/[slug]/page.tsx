@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { MessageCircle, MapPin } from "lucide-react";
 import AddToCartButton from "@/components/Cart/AddToCartButton";
 import { Product } from "@/types";
+import { capitalizeFirst } from "@/utils/format";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -60,7 +61,7 @@ export default async function ProductPage({ params }: Props) {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter mb-4">
-              {product.name}
+              {capitalizeFirst(product.name)}
             </h1>
             <p className="text-3xl md:text-4xl font-black text-green-700">
               Rp{product.price.toLocaleString("id-ID")}
@@ -80,7 +81,7 @@ export default async function ProductPage({ params }: Props) {
               <AddToCartButton product={product} />
             </div>
             <a
-              href={`https://wa.me/${product.vendor.phone}?text=Halo, saya tertarik dengan produk ${product.name} di Pasar Sijenggung.`}
+              href={`https://wa.me/${product.vendor.phone}?text=Halo, saya tertarik dengan produk ${capitalizeFirst(product.name)} di Pasar Sijenggung.`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-white border-2 border-slate-200 text-slate-900 font-black py-4 px-8 rounded-3xl hover:bg-slate-50 transition-all active:scale-95 shadow-lg shadow-slate-100"
