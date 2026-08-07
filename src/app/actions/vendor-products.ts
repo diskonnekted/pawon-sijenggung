@@ -176,3 +176,21 @@ export async function deleteVendorProduct(productId: string, vendorId: string) {
     return { success: false, error: 'Gagal menghapus produk.' }
   }
 }
+
+/**
+ * Mengambil semua kategori produk
+ */
+export async function getCategories() {
+  try {
+    const query = `*[_type == "category"] | order(name asc) {
+      _id,
+      name,
+      "slug": slug.current
+    }`
+    const categories = await writeClient.fetch(query)
+    return { success: true, data: categories }
+  } catch (error) {
+    console.error('Fetch categories failed:', error)
+    return { success: false, error: 'Gagal mengambil daftar kategori.' }
+  }
+}

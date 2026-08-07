@@ -1,12 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { getVendorProducts, createVendorProduct, uploadImageToSanity, deleteVendorProduct, updateVendorProduct } from '@/app/actions/vendor-products'
+import { getVendorProducts, createVendorProduct, uploadImageToSanity, deleteVendorProduct, updateVendorProduct, getCategories } from '@/app/actions/vendor-products'
 import { Package, Plus, Trash2, Edit, Image as ImageIcon, Loader2, X, CheckCircle2, DollarSign, Database, Tags } from 'lucide-react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
-import { sanityFetch } from '@/sanity/lib/live'
-import { CATEGORIES_QUERY } from '@/sanity/lib/queries'
 
 export default function VendorProductManager({ vendorId }: { vendorId: string }) {
   const [products, setProducts] = useState<any[]>([])
@@ -38,8 +36,8 @@ export default function VendorProductManager({ vendorId }: { vendorId: string })
   }
 
   const fetchCategories = async () => {
-    const { data } = await sanityFetch({ query: CATEGORIES_QUERY }) as { data: any[] }
-    if (data) setCategories(data)
+    const res = await getCategories()
+    if (res.success && res.data) setCategories(res.data)
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
