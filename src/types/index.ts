@@ -12,6 +12,7 @@ export interface Vendor {
   isOpen?: boolean;
   closingMessage?: string;
   pin?: string;
+  _refType?: 'vendor' | 'seller';
 }
 
 export interface Category {

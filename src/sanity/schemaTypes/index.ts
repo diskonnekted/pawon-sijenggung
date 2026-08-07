@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from 'sanity'
 import { vendorType } from './vendorType'
 import { productType } from './productType'
+import { sellerType } from './sellerType'
 import { courierType } from './courierType'
 import { orderType } from './orderType'
 import { categoryType } from './categoryType'
@@ -14,6 +15,7 @@ import { appSettingsType } from './appSettingsType'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   appSettingsType,
+  sellerType,
   vendorType,
   productType,
   courierType,

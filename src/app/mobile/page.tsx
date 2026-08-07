@@ -10,7 +10,7 @@ import { Product, Banner, Category, Service, Article } from "@/types";
 import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, Store } from "lucide-react";
 
 interface Props {
   searchParams: Promise<{ q?: string }>;
@@ -254,6 +254,22 @@ export default async function MobileHome({ searchParams }: Props) {
                    </Link>
                 </div>
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-2xl rounded-full -mr-16 -mt-16"></div>
+              </div>
+            </section>
+
+            {/* Portal Penjual CTA */}
+            <section className="pb-10">
+              <div className="bg-white border border-slate-100 rounded-[2.5rem] p-8 relative overflow-hidden shadow-sm">
+                <div className="relative z-10 text-center">
+                   <div className="inline-block p-3 bg-green-50 rounded-2xl mb-4">
+                     <Store className="w-6 h-6 text-green-600" />
+                   </div>
+                   <h3 className="text-xl font-black text-slate-900 mb-2">Punya UMKM di Sijenggung? 🏪</h3>
+                   <p className="text-slate-400 text-xs mb-6 leading-relaxed">Kelola produk, edit profil toko, dan atur status operasional lapak Anda di portal penjual PAWON.</p>
+                   <Link href="/lapak" className="block w-full bg-slate-900 text-white font-black py-4 rounded-2xl shadow-xl active:scale-95 transition-all">
+                      Masuk ke Lapak Anda
+                   </Link>
+                </div>
               </div>
             </section>
           </>

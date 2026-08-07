@@ -10,7 +10,7 @@ const liveClient = client.withConfig({
 const isDev = process.env.NODE_ENV === 'development'
 
 let sanityFetch: ({ query, params, tags }: { query: string; params?: Record<string, unknown>; tags?: string[] }) => Promise<unknown>
-let SanityLive: ({ children }: { children: ReactNode }) => ReactNode
+let SanityLive: any
 
 if (isDev) {
   // In development, use regular client to avoid SSE network errors with Turbopack
@@ -18,7 +18,7 @@ if (isDev) {
     const data = await liveClient.fetch(query, params || {}, { cache: 'no-store', next: { tags } })
     return { data }
   }
-  SanityLive = ({ children }) => children as ReactNode
+  SanityLive = ({ children }: { children?: ReactNode }) => (children || null) as ReactNode
 } else {
   // In production, use full live mode
   const { sanityFetch: sf, SanityLive: SL } = defineLive({ client: liveClient })

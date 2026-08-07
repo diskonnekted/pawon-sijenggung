@@ -54,7 +54,7 @@ function formatPhone(phone: string): string {
 }
 
 export async function sendWhatsAppNotification(target: string, message: string) {
-  const token = process.env.FONNTE_API_TOKEN || process.env.FONNTE_NEW_TOKEN || 'bxWCvLcukyYH4ky6eDur'
+  const token = process.env.FONNTE_API_TOKEN || process.env.FONNTE_NEW_TOKEN || 'NPNgp2WtN8Ya3JXkb2pp'
 
   if (!token) {
     console.warn('FONNTE_API_TOKEN tidak ditemukan di environment variables.')

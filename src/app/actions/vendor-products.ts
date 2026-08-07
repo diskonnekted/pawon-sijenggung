@@ -21,6 +21,8 @@ export async function getVendorProducts(vendorId: string) {
       price,
       stock,
       image,
+      description,
+      "categoryIds": categories[]._ref,
       "slug": slug.current
     }`
     const products = await writeClient.fetch(query, { vendorId })
@@ -100,6 +102,58 @@ export async function createVendorProduct(vendorId: string, data: {
   } catch (error) {
     console.error('Create product failed:', error)
     return { success: false, error: 'Gagal menambah produk.' }
+  }
+}
+
+/**
+ * Memperbarui produk milik sendiri
+ */
+export async function updateVendorProduct(vendorId: string, productId: string, data: {
+  name: string,
+  price: number,
+  stock: number,
+  description?: string,
+  assetId?: string,
+  categoryIds?: string[]
+}) {
+  try {
+    // Validasi kepemilikan sebelum edit
+    const product = await writeClient.fetch(`*[_type == "product" && _id == $productId][0]{"vId": vendor._ref}`, { productId })
+    
+    if (!product || product.vId !== vendorId) {
+      return { success: false, error: 'Akses ditolak.' }
+    }
+
+    const updateFields: any = {
+      name: data.name,
+      price: data.price,
+      stock: data.stock,
+      description: data.description,
+    }
+
+    if (data.assetId) {
+      updateFields.image = {
+        _type: 'image',
+        asset: {
+          _type: 'reference',
+          _ref: data.assetId,
+        },
+      }
+    }
+
+    if (data.categoryIds && data.categoryIds.length > 0) {
+      updateFields.categories = data.categoryIds.map(id => ({
+        _type: 'reference',
+        _ref: id,
+        _key: Math.random().toString(36).substr(2, 9)
+      }))
+    }
+
+    await writeClient.patch(productId).set(updateFields).commit()
+    return { success: true }
+  } catch (error) {
+    console.error('Update product failed:', error)
+    return { success: false, error: 'Gagal memperbarui produk.' }
   }
 }
 

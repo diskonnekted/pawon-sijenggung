@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { MessageCircle, MapPin, ChevronLeft, ShoppingCart, Share2 } from "lucide-react";
 import AddToCartButton from "@/components/Cart/AddToCartButton";
 import { Product } from "@/types";
+import { capitalizeFirst } from "@/utils/format";
 
 interface Props {
   params: Promise<{ slug: string }>;

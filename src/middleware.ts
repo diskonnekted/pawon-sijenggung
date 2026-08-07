@@ -13,6 +13,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/studio') ||
     pathname.startsWith('/static') ||
     pathname.startsWith('/order/') ||
+    pathname.startsWith('/lapak') ||
     pathname.includes('.') // Catch files with extensions
   ) {
     return NextResponse.next();

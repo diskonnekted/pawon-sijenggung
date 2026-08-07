@@ -73,12 +73,32 @@ export const structure: StructureResolver = (S) =>
             ])
         ),
       S.listItem()
+        .title('Toko/UMKM')
+        .icon(TagIcon)
+        .child(
+          S.list()
+            .title('Manajemen Toko')
+            .items([
+              S.listItem()
+                .title('Semua Toko')
+                .child(S.documentTypeList('seller').title('Semua Toko/UMKM')),
+              S.divider(),
+              S.listItem()
+                .title('Perlu Import Data')
+                .child(
+                  S.documentList()
+                    .title('Belum Import dari Folder')
+                    .filter('_type == "seller" && !logo')
+                ),
+            ])
+        ),
+      S.listItem()
         .title('Kurir Desa')
         .icon(RocketIcon)
         .child(S.documentTypeList('courier').title('Tim Kurir')),
       
       // Filter out types that are handled above manually
       ...S.documentTypeListItems().filter(
-        (item) => !['order', 'product', 'vendor', 'courier', 'category'].includes(item.getId()!)
+        (item) => !['order', 'product', 'vendor', 'courier', 'category', 'seller'].includes(item.getId()!)
       ),
     ])

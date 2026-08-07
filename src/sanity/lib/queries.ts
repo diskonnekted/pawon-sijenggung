@@ -109,15 +109,27 @@ export const PRODUCT_BY_SLUG_QUERY = defineQuery(`
 `)
 
 export const VENDORS_QUERY = defineQuery(`
-  *[_type == "vendor" && isVerified == true] | order(name asc) {
+  *[_type == "vendor" && isVerified == true] {
     _id,
     name,
     "slug": slug.current,
     logo,
     address,
     description,
-    isVerified
+    isVerified,
+    "_refType": _type
+  } +
+  *[_type == "seller" && isActive == true && defined(logo)] {
+    _id,
+    name,
+    "slug": "seller-" + slug.current,
+    logo,
+    "address": ("RT " + rt + " RW " + rw),
+    "description": ("Toko UMKM di RT " + rt + " RW " + rw + " - " + count(products) + " produk"),
+    "isVerified": true,
+    "_refType": "seller"
   }
+  | order(name asc)
 `)
 
 export const VENDOR_BY_SLUG_QUERY = defineQuery(`

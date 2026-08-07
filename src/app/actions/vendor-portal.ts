@@ -11,11 +11,15 @@ const writeClient = createClient({
 })
 
 /**
- * Mencari vendor berdasarkan nomor WhatsApp dan PIN untuk keperluan login portal.
+ * Mencari vendor berdasarkan nama dan PIN untuk keperluan login portal.
  */
-export async function getVendorByPhone(phone: string, pin: string) {
+export async function getVendorByUsername(username: string, pin: string) {
   try {
-    const query = `*[_type == "vendor" && phone == $phone][0]{
+    // Normalize: uppercase, remove spaces and hyphens for matching
+    const normalized = username.trim().toUpperCase().replace(/[\s-]/g, '')
+    
+    // Query all vendors with PIN, then filter by name in JS
+    const vendors = await writeClient.fetch(`*[_type == "vendor" && defined(pin) && pin == $pin]{
       _id,
       name,
       phone,
@@ -24,15 +28,20 @@ export async function getVendorByPhone(phone: string, pin: string) {
       isOpen,
       closingMessage,
       "slug": slug.current
-    }`
-    const vendor = await writeClient.fetch(query, { phone })
+    }`, { pin })
     
-    if (!vendor) {
-      return { success: false, error: 'Nomor WhatsApp tidak terdaftar sebagai penjual.' }
+    if (!vendors || vendors.length === 0) {
+      return { success: false, error: 'Username atau PIN salah.' }
     }
 
-    if (vendor.pin !== pin) {
-      return { success: false, error: 'PIN yang Anda masukkan salah.' }
+    // Find matching vendor by normalized name
+    const vendor = vendors.find((v: any) => {
+      const vendorNameNormalized = v.name.trim().toUpperCase().replace(/[\s-]/g, '')
+      return vendorNameNormalized === normalized
+    })
+
+    if (!vendor) {
+      return { success: false, error: 'Username atau PIN salah.' }
     }
 
     // Jangan kirim PIN balik ke client untuk keamanan

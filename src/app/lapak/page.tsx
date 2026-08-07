@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { getVendorByPhone } from '@/app/actions/vendor-portal'
-import { Store, Phone, ArrowRight, Loader2, Lock } from 'lucide-react'
+import { getVendorByUsername } from '@/app/actions/vendor-portal'
+import { Store, User, ArrowRight, Loader2, Lock } from 'lucide-react'
 import VendorDashboard from './_components/VendorDashboard'
 
 export default function VendorLoginPage() {
-  const [phone, setPhone] = useState('')
+  const [username, setUsername] = useState('')
   const [pin, setPin] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -17,7 +17,7 @@ export default function VendorLoginPage() {
     setLoading(true)
     setError(null)
 
-    const res = await getVendorByPhone(phone, pin)
+    const res = await getVendorByUsername(username, pin)
     if (res.success && res.data) {
       setVendorData(res.data)
     } else {
@@ -44,17 +44,17 @@ export default function VendorLoginPage() {
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3 ml-1">
-              Nomor WhatsApp Toko
+              Username Toko
             </label>
             <div className="relative">
-              <Phone className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
+              <User className="absolute left-5 top-5 w-5 h-5 text-slate-300" />
               <input
                 required
-                type="tel"
-                placeholder="Contoh: 08123456789"
-                className="w-full pl-14 pr-5 py-5 bg-slate-50 border-none rounded-3xl focus:ring-2 focus:ring-green-600 outline-none transition-all font-bold text-slate-900"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                type="text"
+                placeholder="Contoh: RT01RW01"
+                className="w-full pl-14 pr-5 py-5 bg-slate-50 border-none rounded-3xl focus:ring-2 focus:ring-green-600 outline-none transition-all font-bold text-slate-900 uppercase tracking-widest"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
           </div>
