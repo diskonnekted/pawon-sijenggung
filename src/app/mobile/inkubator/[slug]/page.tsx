@@ -32,6 +32,127 @@ const iconMap: Record<string, any> = {
   Building
 };
 
+interface ServiceDetails {
+  manfaat: string[];
+  materi: string[];
+  materiTitle: string;
+}
+
+const detailsMap: Record<string, ServiceDetails> = {
+  "pelatihan-terstruktur-inkubator": {
+    manfaat: [
+      "Workshop interaktif dua mingguan dengan mentor bisnis praktisi.",
+      "Akses modul belajar mandiri (manajemen, keuangan, marketing).",
+      "Sertifikat kelulusan program inkubasi dari Desa Sijenggung."
+    ],
+    materiTitle: "Kurikulum & Materi Pelatihan",
+    materi: [
+      "Fundamental Bisnis & Mindset Kewirausahaan",
+      "Penyusunan Laporan Keuangan & HPP Produk",
+      "Digital Marketing & Optimasi Toko Online",
+      "Standardisasi Mutu Produk & Keamanan Pangan"
+    ]
+  },
+  "mentoring-personal-inkubator": {
+    manfaat: [
+      "Jadwal fleksibel, disesuaikan dengan ketersediaan pelaku UMKM.",
+      "Pemecahan masalah spesifik (penurunan omzet, kendala bahan baku, dll).",
+      "Rencana aksi taktis yang dipantau perkembangannya setiap minggu."
+    ],
+    materiTitle: "Tahapan Mentoring",
+    materi: [
+      "Sesi Diagnostik: Memetakan kondisi dan masalah utama UMKM",
+      "Sesi Strategi: Menyusun solusi langkah-demi-langkah",
+      "Eksekusi & Pendampingan Lapangan",
+      "Evaluasi Berkala & Review Omzet Bulanan"
+    ]
+  },
+  "bantuan-legalitas-inkubator": {
+    manfaat: [
+      "Pengurusan gratis bagi warga desa yang terdaftar program.",
+      "Pendampingan melengkapi berkas administrasi dan uji produk.",
+      "Membuka peluang produk masuk ke pasar retail modern & minimarket."
+    ],
+    materiTitle: "Legalitas yang Difasilitasi",
+    materi: [
+      "Nomor Induk Berusaha (NIB)",
+      "Sertifikasi Halal (Self Declare / Reguler)",
+      "Pangan Industri Rumah Tangga (P-IRT)",
+      "Pendaftaran Hak Merek / HAKI"
+    ]
+  },
+  "desain-branding-inkubator": {
+    manfaat: [
+      "Desain logo baru yang modern dan merepresentasikan keunikan produk.",
+      "Rekayasa desain kemasan agar lebih menarik dan tahan lama.",
+      "Foto produk kualitas studio gratis untuk katalog & promosi online."
+    ],
+    materiTitle: "Fasilitas Branding",
+    materi: [
+      "Redesain Identitas Visual & Logo Brand",
+      "Konsultasi Material Kemasan Higienis",
+      "Pembuatan Copywriting Label & Kemasan",
+      "Sesi Foto Produk Studio Mini"
+    ]
+  },
+  "akses-digital-inkubator": {
+    manfaat: [
+      "Pendampingan pendaftaran toko di Shopee, Tokopedia, dan PAWON.",
+      "Pelatihan optimasi SEO produk agar mudah dicari pembeli.",
+      "Pembuatan katalog digital & pemanfaatan WhatsApp Business."
+    ],
+    materiTitle: "Fokus Digitalisasi",
+    materi: [
+      "Setup Toko Online di Marketplace & PAWON",
+      "Strategi Iklan & Promosi Digital Efektif",
+      "Pengelolaan Media Sosial (Instagram/TikTok)",
+      "Integrasi Pembayaran QRIS & Cashless"
+    ]
+  },
+  "b2b-matching-inkubator": {
+    manfaat: [
+      "Fasilitasi pameran produk UMKM di tingkat kabupaten/provinsi.",
+      "Pertemuan bisnis dengan agen, distributor, dan ritel modern.",
+      "Kesempatan kontrak kerja sama suplai barang rutin jangka panjang."
+    ],
+    materiTitle: "Saluran Kemitraan",
+    materi: [
+      "Pameran & Expo Produk Unggulan Desa",
+      "Pitching ke Jaringan Toko Oleh-oleh & Ritel",
+      "Kemitraan Suplai Hotel & Restoran",
+      "Negosiasi Kontrak Dagang B2B"
+    ]
+  },
+  "akses-modal-inkubator": {
+    manfaat: [
+      "Bantuan penyusunan proposal bisnis yang rapi dan bankable.",
+      "Pendampingan pengajuan Kredit Usaha Rakyat (KUR).",
+      "Akses permodalan alternatif dari paguyuban/investor lokal."
+    ],
+    materiTitle: "Layanan Pembiayaan",
+    materi: [
+      "Analisis Kelayakan Finansial Usaha",
+      "Penyusunan Proposal & Laporan Laba Rugi",
+      "Koneksi ke Bank Penyalur KUR Desa",
+      "Fasilitasi Hubungan Investor & UMKM"
+    ]
+  },
+  "ruang-kerja-bersama-inkubator": {
+    manfaat: [
+      "Fasilitas internet berkecepatan tinggi gratis di Coworking Space.",
+      "Ruang pertemuan ber-AC yang nyaman untuk rapat dan diskusi.",
+      "Pojok baca dengan referensi buku bisnis & kewirausahaan."
+    ],
+    materiTitle: "Fasilitas Ruang",
+    materi: [
+      "Akses Meja Kerja & Internet Cepat",
+      "Ruang Kolaborasi & Brainstorming",
+      "Peralatan Presentasi Lengkap",
+      "Fasilitas Cetak & Scan Dokumen Usaha"
+    ]
+  }
+};
+
 export default async function MobileIncubatorDetailPage({ params }: Props) {
   const { slug } = await params;
   const { data: service } = await sanityFetch({
@@ -44,6 +165,20 @@ export default async function MobileIncubatorDetailPage({ params }: Props) {
   }
 
   const Icon = iconMap[service.iconName] || Globe;
+  const details = detailsMap[slug] || {
+    manfaat: [
+      "Pendampingan intensif oleh tenaga ahli di bidangnya.",
+      "Akses eksklusif ke jaringan pemasaran Desa Sijenggung.",
+      "Meningkatkan omzet & daya saing."
+    ],
+    materiTitle: "Fokus Program",
+    materi: [
+      "Perencanaan & Strategi Operasional Usaha",
+      "Implementasi Metode Kerja Terbaik",
+      "Evaluasi & Kontrol Kualitas Produk",
+      "Kolaborasi Sinergis Antar-UMKM"
+    ]
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -74,18 +209,28 @@ export default async function MobileIncubatorDetailPage({ params }: Props) {
 
         <div className="space-y-8">
           <div>
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4">Keunggulan</h3>
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4">Manfaat Program</h3>
             <div className="space-y-4">
-              {[
-                "Pendampingan dari ahli profesional",
-                "Akses langsung ke jaringan kemitraan desa",
-                "Meningkatkan omzet & daya saing"
-              ].map((benefit, idx) => (
+              {details.manfaat.map((benefit, idx) => (
                 <div key={idx} className="flex gap-4 items-start bg-slate-50 p-5 rounded-3xl">
                   <div className="bg-green-100 p-1 rounded-full flex-shrink-0">
                     <CheckCircle2 className="w-4 h-4 text-green-600" />
                   </div>
                   <p className="text-sm font-bold text-slate-700">{benefit}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4">{details.materiTitle}</h3>
+            <div className="space-y-3">
+              {details.materi.map((m, idx) => (
+                <div key={idx} className="flex gap-4 items-center bg-slate-50/50 border border-slate-100 p-4 rounded-2xl">
+                  <div className="bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black flex-shrink-0">
+                    {idx + 1}
+                  </div>
+                  <p className="text-xs font-bold text-slate-600">{m}</p>
                 </div>
               ))}
             </div>
